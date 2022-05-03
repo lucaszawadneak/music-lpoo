@@ -11,13 +11,14 @@ import beans.Artist;
  * @author lucas
  */
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.List;/**
  *
  * @author lucas
  */
 public class ArtistDAO implements DAO<Artist>{
     
-    private static final String INSERT = "";
+    private static final String INSERT = "INSERT INTO artista (nome,pais,descricao) VALUES (?,?,?)";
     private static final String FIND_PAGINATED = "";
     private static final String FIND_ONE = "";
     
@@ -41,8 +42,17 @@ public class ArtistDAO implements DAO<Artist>{
     }
 
     @Override
-    public void insert(Artist t) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void insert(Artist a) throws Exception {
+        try{
+            PreparedStatement ps = this.con.prepareStatement(INSERT);
+            ps.setString(1,a.getNome());
+            ps.setString(2,a.getPais());
+            ps.setString(3,a.getDescricao());
+            
+            ps.executeUpdate();
+        } catch (Exception e){
+            throw e;
+        }
     }
     
 }

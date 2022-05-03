@@ -10,20 +10,23 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Artist</title>
-        <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
-        <link href="../css/styles.css" rel="stylesheet" />
+        <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+        <link href="./css/styles.css" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
     </head>
     <body id="page-top" class="container"></body>
+        <c:if test="${empty artista}">
+            <jsp:forward page="index.jsp"/>
+        </c:if>
         <div class="mt-lg-5">
-            <h2>Nome do artista</h2>
+            <h2>${artista.nome}</h2>
             <p>30 músicas</p>
             
             <nav class="navbar navbar-light bg-light px-5" style="border-radius:5px">
                 <a class="btn btn-light">Cadastrar nova música</a>
                 <a class="btn btn-light">Cadastrar novo álbum</a>
-                <a class="btn btn-light" href="../index.jsp">Voltar para página inicial</a>
+                <a class="btn btn-light" href="./index.jsp">Voltar para página inicial</a>
             </nav>
             
             

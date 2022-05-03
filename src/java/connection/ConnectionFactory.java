@@ -6,6 +6,7 @@ package connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 /**
  *
  * @author lucas
@@ -16,6 +17,12 @@ public class ConnectionFactory implements AutoCloseable {
     private static String LOGIN = "postgres";
     private static String PASSWORD = "postgres";
     
+    private static String CREATE_ARTIST = "CREATE TABLE IF NOT EXISTS artista ("
+            + "id SERIAL,"
+            + "nome varchar(50) NOT NULL,"
+            + "pais varchar(50) NOT NULL,"
+            + "descricao varchar(150) NOT NULL) ";
+    
     private Connection con = null;
     
     public Connection getConnection() throws Exception{
@@ -23,6 +30,10 @@ public class ConnectionFactory implements AutoCloseable {
             try{
                 Class.forName(DRIVER);
                 con = DriverManager.getConnection(URL,LOGIN,PASSWORD);
+                
+                PreparedStatement create_artist = con.prepareStatement(CREATE_ARTIST);
+                
+                create_artist.executeUpdate();
             } catch(ClassNotFoundException e){
                 throw new Exception("Driver não encontrado.",e);
             } catch(java.sql.SQLException e){

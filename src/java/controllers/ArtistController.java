@@ -12,6 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import beans.Artist;
+import connection.ConnectionFactory;
+import dao.ArtistDAO;
+import javax.servlet.RequestDispatcher;
+
 /**
  *
  * @author lucas
@@ -32,20 +37,31 @@ public class ArtistController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String nome = request.getParameter("nome");
+        RequestDispatcher rd = request.getRequestDispatcher("/artist/index.jsp");
         
-//        try (PrintWriter out = response.getWriter()) {;
-//            /* TODO output your page here. You may use following sample code. */
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet base</title>");            
-//            out.println("</head>");
-//            out.println("<body>");
-//            out.println("<h1>Servlet base at " + nome + "</h1>");
-//            out.println("</body>");
-//            out.println("</html>");
-//        }
+        String action = request.getParameter("action");
+        ConnectionFactory conn = new ConnectionFactory();
+        
+        if("store".equals(action)){
+            String nome = request.getParameter("nome");
+            String pais = request.getParameter("pais");
+            String descricao = request.getParameter("descricao");
+            
+            Artist a = new Artist(nome,pais, descricao);
+            
+            try{
+                ArtistDAO aDAO = new ArtistDAO(conn.getConnection());
+                aDAO.insert(a);
+                    
+                request.setAttribute("artista", a);
+                
+                rd.forward(request, response);
+            } catch (Exception e){
+                e.printStackTrace();
+                System.out.println("Erro ao criar artista");
+            }
+            
+        }
         
     }
 
