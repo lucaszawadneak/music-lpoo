@@ -61,6 +61,26 @@ public class ArtistController extends HttpServlet {
                 System.out.println("Erro ao criar artista");
             }
             
+        } else {
+            String artistID = request.getParameter("id");
+            if(artistID == null) {
+                response.sendRedirect("./index.jsp");
+            }
+            try{
+                ArtistDAO aDAO = new ArtistDAO(conn.getConnection());
+                Artist a = aDAO.find(Integer.parseInt(artistID));
+                
+                if(a == null){
+                    response.sendRedirect("./index.jsp");
+                }
+                
+                request.setAttribute("artista", a);
+                
+                rd.forward(request, response);
+            } catch (Exception e){
+                e.printStackTrace();
+                System.out.println("Erro ao criar artista");
+            }
         }
         
     }

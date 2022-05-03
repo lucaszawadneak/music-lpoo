@@ -26,6 +26,9 @@ public class Artist {
         this.pais = pais;
         this.descricao = descricao;
     }
+    
+    public Artist() {
+    }
 
     public Integer getId() {
         return id;

@@ -12,6 +12,7 @@ import beans.Artist;
  */
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.List;/**
  *
  * @author lucas
@@ -19,8 +20,8 @@ import java.util.List;/**
 public class ArtistDAO implements DAO<Artist>{
     
     private static final String INSERT = "INSERT INTO artista (nome,pais,descricao) VALUES (?,?,?)";
-    private static final String FIND_PAGINATED = "";
-    private static final String FIND_ONE = "";
+//    private static final String FIND_PAGINATED = "";
+    private static final String FIND_ONE = "SELECT * FROM artista WHERE id = ?";
     
     private Connection con = null;
     
@@ -32,8 +33,24 @@ public class ArtistDAO implements DAO<Artist>{
     }
 
     @Override
-    public Artist find(String identifier) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Artist find(Integer identifier) throws Exception {
+        try{
+            PreparedStatement ps = this.con.prepareStatement(FIND_ONE);
+            ps.setInt(1,identifier);
+            
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Artist a = new Artist();
+                a.setId(Integer.parseInt(rs.getString("id")));
+                a.setNome(rs.getString("nome"));
+                a.setPais(rs.getString("pais"));
+                a.setDescricao(rs.getString("descricao"));
+                return a;
+            }
+        } catch (Exception e){
+            throw e;
+        }
+        return null;
     }
 
     @Override
