@@ -44,7 +44,7 @@ public class ArtistController extends HttpServlet {
         
         String action = request.getParameter("action");
         ConnectionFactory conn = new ConnectionFactory();
-        
+
         if("store".equals(action)){
             String nome = request.getParameter("nome");
             String pais = request.getParameter("pais");
@@ -64,6 +64,27 @@ public class ArtistController extends HttpServlet {
                 System.out.println("Erro ao criar artista");
             }
             
+        } else if("search".equals(action)){
+            request.setAttribute("artistas", new ArrayList<>());
+            String searchParam = request.getParameter("searchParam");
+            System.out.println("oi");
+
+            try{
+                
+                ArtistDAO aDAO = new ArtistDAO(conn.getConnection());
+
+                ArrayList<Artist> artistas = aDAO.search(searchParam);
+
+                request.setAttribute("artistas", artistas);
+
+                RequestDispatcher search = request.getRequestDispatcher("/artist/selecionarArtista.jsp");
+                search.forward(request, response);
+            
+            } catch (Exception e){
+                System.out.println(e);
+                e.printStackTrace();
+            }
+                    
         } else {
             String artistID = request.getParameter("id");
             String page = request.getParameter("page");

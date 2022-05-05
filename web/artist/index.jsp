@@ -11,13 +11,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Artist</title>
         <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-        <link href="./css/styles.css" rel="stylesheet" />
+        <link href="/music-lpoo/css/styles.css" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
     </head>
-    <body id="page-top" class="container"></body>
+    <body id="page-top" class="container">
         <c:if test="${empty artista}">
-            <jsp:forward page="index.jsp"/>
+            <c:redirect url="/index.jsp" />
         </c:if>
         <div class="mt-lg-5">
             <h2>${artista.nome}</h2>
@@ -42,7 +42,7 @@
             
             <c:forEach var="m" items="${musicas}">
                 <div class="card my-3">
-                    <strong class="card-header">%{m.title} (${m.ano})</strong>
+                    <strong class="card-header">${m.title} (${m.ano})</strong>
                     <div class="card-body">
                         <p>Duração: ${m.duracao}</p>
                         <a href="/music/index.jsp?id=${m.id}" class="card-link">Ir para música</a>

@@ -10,8 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cadastrar artista</title>
-        <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
-        <link href="../css/styles.css" rel="stylesheet" />
+        <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+        <link href="/music-lpoo/css/styles.css" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
     </head>
@@ -21,8 +21,8 @@
             <form action="../ArtistController" method="POST">
                 <input name="action" value="store" type="hidden"/>
                 <input class="form-control mb-2" placeholder="Nome" maxlength="50" name="nome" required/>
-                <input class="form-control mb-2" placeholder="País" maxlength="50" name="pais"/>
-                <textarea class="form-control mb-2" placeholder="Descrição" maxlength="150" name="descricao"></textarea>
+                <input class="form-control mb-2" placeholder="País" maxlength="50" name="pais" required/>
+                <textarea class="form-control mb-2" placeholder="Descrição" maxlength="150" name="descricao" required></textarea>
                 <button type="submit" class="btn btn-secondary">Cancelar</button>
                 <button type="submit" class="btn btn-warning">Cadastrar</button>
             </form>

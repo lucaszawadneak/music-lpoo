@@ -49,14 +49,14 @@ public class MusicDAO implements DAO<Music> {
         Integer offset = page * 10;
         String sql = "SELECT * FROM music WHERE artist_id = ?";
         if(searchParam != null)
-            sql += " AND title LIKE %?%";
+            sql += " AND title LIKE ?";
         sql += " LIMIT 10 OFFSET ?";
-        ArrayList<Music> list = null;
+        ArrayList<Music> list = new ArrayList<>();;
         try{
             PreparedStatement ps = this.con.prepareStatement(FIND_PAGINATED);
             ps.setInt(1,artist_id);
             if(searchParam != null){
-                ps.setString(2,searchParam);
+                ps.setString(2,"%" + searchParam + "%");
                 ps.setInt(3,offset);
             } else {
                 ps.setInt(2,offset);   
