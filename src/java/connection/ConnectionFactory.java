@@ -22,6 +22,7 @@ public class ConnectionFactory implements AutoCloseable {
             + "nome varchar(50) NOT NULL,"
             + "pais varchar(50) NOT NULL,"
             + "descricao varchar(150) NOT NULL) ";
+    private static String CREATE_MUSIC = "";
     
     private Connection con = null;
     
@@ -32,6 +33,7 @@ public class ConnectionFactory implements AutoCloseable {
                 con = DriverManager.getConnection(URL,LOGIN,PASSWORD);
                 
                 PreparedStatement create_artist = con.prepareStatement(CREATE_ARTIST);
+//                PreparedStatement create_artist = con.prepareStatement(CREATE_MUSIC);
                 
                 create_artist.executeUpdate();
             } catch(ClassNotFoundException e){

@@ -21,38 +21,53 @@
         </c:if>
         <div class="mt-lg-5">
             <h2>${artista.nome}</h2>
-            <p>30 músicas</p>
+            <p>${musicCount} músicas</p>
             
             <nav class="navbar navbar-light bg-light px-5" style="border-radius:5px">
-                <a class="btn btn-light">Cadastrar nova música</a>
-                <a class="btn btn-light">Cadastrar novo álbum</a>
+                <a class="btn btn-light" href="MusicController?action=store">Cadastrar nova música</a>
+                <a class="btn btn-light" href="RecordController?action=store">Cadastrar novo álbum</a>
                 <a class="btn btn-light" href="./index.jsp">Voltar para página inicial</a>
             </nav>
             
+            <form action="ArtistController" method="GET">
+              <div class="input-group mb-3 mt-3">
+                <div class="input-group-prepend">
+                  <button class="btn btn-outline-secondary" type="submit">Pesquisar</button>
+                </div>
+                <input type="text" class="form-control"name="searchParam" value="${param.searchParam}">
+                <input type="hidden" name="id" value="${artista.id}">
+                <input type="hidden" name="page" value="0">
+              </div>
+            </form>
             
+            <c:forEach var="m" items="${musicas}">
+                <div class="card my-3">
+                    <strong class="card-header">%{m.title} (${m.ano})</strong>
+                    <div class="card-body">
+                        <p>Duração: ${m.duracao}</p>
+                        <a href="/music/index.jsp?id=${m.id}" class="card-link">Ir para música</a>
+                    </div>
+                </div>
+            </c:forEach>
             <div class="card my-3">
                 <strong class="card-header">Nome da música (ano)</strong>
                 <div class="card-body">
                     <p>Duração: 3:12</p>
-                    <a href="#" class="card-link">Ir para música</a>
+                    <a href="/music/index.jsp?id=1" class="card-link">Ir para música</a>
                 </div>
             </div>
             
             <nav aria-label="Page navigation example">
               <ul class="pagination">
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
-<!--            <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
-                <li class="page-item"><a class="page-link" href="?page=3">3</a></li>-->
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-                </li>
+                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=1&searchParam=${param.searchParam}">1</a></li>
+                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=2&searchParam=${param.searchParam}">2</a></li>
+                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=3&searchParam=${param.searchParam}">3</a></li>
+                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=4&searchParam=${param.searchParam}">4</a></li>
+                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=5&searchParam=${param.searchParam}">5</a></li>
+                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=6&searchParam=${param.searchParam}">6</a></li>
+                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=7&searchParam=${param.searchParam}">7</a></li>
+                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=8&searchParam=${param.searchParam}">8</a></li>
+                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=9&searchParam=${param.searchParam}">9</a></li>
               </ul>
             </nav>
         </div>

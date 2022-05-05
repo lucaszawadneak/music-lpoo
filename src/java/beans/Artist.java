@@ -4,11 +4,13 @@
  */
 package beans;
 
+import java.io.Serializable;
+
 /**
  *
  * @author lucas
  */
-public class Artist {
+public class Artist implements Serializable {
     private Integer id;
     private String nome;
     private String pais;

@@ -20,7 +20,7 @@ import java.util.List;/**
 public class ArtistDAO implements DAO<Artist>{
     
     private static final String INSERT = "INSERT INTO artista (nome,pais,descricao) VALUES (?,?,?)";
-//    private static final String FIND_PAGINATED = "";
+//    private static final String FIND_PAGINATED = "SELECT * FROM artista";
     private static final String FIND_ONE = "SELECT * FROM artista WHERE id = ?";
     
     private Connection con = null;
@@ -51,11 +51,6 @@ public class ArtistDAO implements DAO<Artist>{
             throw e;
         }
         return null;
-    }
-
-    @Override
-    public List<Artist> findPaginated() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

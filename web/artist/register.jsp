@@ -20,7 +20,7 @@
             <h2>Cadastrar artista</h2>
             <form action="../ArtistController" method="POST">
                 <input name="action" value="store" type="hidden"/>
-                <input class="form-control mb-2" placeholder="Nome" maxlength="50" name="nome"/>
+                <input class="form-control mb-2" placeholder="Nome" maxlength="50" name="nome" required/>
                 <input class="form-control mb-2" placeholder="País" maxlength="50" name="pais"/>
                 <textarea class="form-control mb-2" placeholder="Descrição" maxlength="150" name="descricao"></textarea>
                 <button type="submit" class="btn btn-secondary">Cancelar</button>

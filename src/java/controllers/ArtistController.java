@@ -13,8 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.Artist;
+import beans.Music;
 import connection.ConnectionFactory;
 import dao.ArtistDAO;
+import dao.MusicDAO;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 
 /**
@@ -63,9 +66,14 @@ public class ArtistController extends HttpServlet {
             
         } else {
             String artistID = request.getParameter("id");
+            String page = request.getParameter("page");
+            String searchParam = request.getParameter("searchParam");
+            
+            System.out.println(searchParam);
             if(artistID == null) {
                 response.sendRedirect("./index.jsp");
             }
+            
             try{
                 ArtistDAO aDAO = new ArtistDAO(conn.getConnection());
                 Artist a = aDAO.find(Integer.parseInt(artistID));
@@ -75,11 +83,23 @@ public class ArtistController extends HttpServlet {
                 }
                 
                 request.setAttribute("artista", a);
+//                MusicDAO mDAO = new MusicDAO(conn.getConnection());
+//               
+//                Integer musicCount = mDAO.getArtistMusicCount(a.getId());
+//                
+//                request.setAttribute("musicCount", musicCount);
+                Integer localPage = 0;
+                if(page != null){
+                    localPage = Integer.parseInt(page);
+                }
+//                ArrayList<Music> musicList = mDAO.findByArtistPaginated(a.getId(), localPage, null);
                 
+//                request.setAttribute("musicList", musicList);
                 rd.forward(request, response);
             } catch (Exception e){
                 e.printStackTrace();
-                System.out.println("Erro ao criar artista");
+                System.out.println("Erro ao buscar músicas");
+                System.out.println(e);
             }
         }
         

@@ -12,6 +12,5 @@ import java.util.List;
  */
 public interface DAO<T> {
     T find (Integer identifier) throws Exception;
-    List<T> findPaginated() throws Exception;
     void insert(T t) throws Exception;
 }
