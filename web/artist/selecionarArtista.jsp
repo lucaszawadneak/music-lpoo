@@ -25,18 +25,27 @@
                 <div class="input-group-prepend">
                   <button class="btn btn-outline-secondary" type="submit">Pesquisar</button>
                 </div>
-                <input type="text" class="form-control"name="searchParam" value="${param.searchParam}">
+                <input type="text" class="form-control"name="searchParam" value="${param.searchParam}" minlength="3">
                 <input type="hidden" name="action" value="search"/>
               </div>
         </form>
         
-        <div class="card">
-                    
+        <div class="card p-3">
             <c:forEach var="a" items="${artistas}">
-                <a class="btn m-1" href="${page}?artist_id=${a.id}">
-                    <strong class="card-header">${a.nome}</strong>
-                </a>
-            </c:forEach>           
+                <c:if test="${empty page}">
+                    <a class="btn btn-primary m-1" href="ArtistController?id=${a.id}">
+                        <strong>${a.nome}</strong>
+                    </a>
+                </c:if>
+                <c:if test="${not empty redirectPage}">
+                    <a class="btn btn-primary m-1" href="${redirectPage}?artist_id=${a.id}">
+                        <strong>${a.nome}</strong>
+                    </a>
+                </c:if>
+            </c:forEach>
+            <c:if test="${empty artistas}">
+                <strong>Nenhum artista encontrado</strong>
+            </c:if>
         </div>
     </body>
 </html>

@@ -67,7 +67,6 @@ public class ArtistController extends HttpServlet {
         } else if ("search".equals(action)) {
             request.setAttribute("artistas", new ArrayList<>());
             String searchParam = request.getParameter("searchParam");
-            System.out.println("oi");
 
             try {
 
@@ -104,19 +103,19 @@ public class ArtistController extends HttpServlet {
                 }
 
                 request.setAttribute("artista", a);
-                // MusicDAO mDAO = new MusicDAO(conn.getConnection());
-                //
-                // Integer musicCount = mDAO.getArtistMusicCount(a.getId());
-                //
-                // request.setAttribute("musicCount", musicCount);
+                MusicDAO mDAO = new MusicDAO(conn.getConnection());
+                
+                Integer musicCount = mDAO.getArtistMusicCount(a.getId());
+                
+                request.setAttribute("musicCount", musicCount);
+                
                 Integer localPage = 0;
                 if (page != null) {
                     localPage = Integer.parseInt(page);
                 }
-                // ArrayList<Music> musicList = mDAO.findByArtistPaginated(a.getId(), localPage,
-                // null);
+                ArrayList<Music> musicList = mDAO.findByArtistPaginated(a.getId(), localPage,null);
 
-                // request.setAttribute("musicList", musicList);
+                request.setAttribute("musicList", musicList);
                 rd.forward(request, response);
             } catch (Exception e) {
                 e.printStackTrace();

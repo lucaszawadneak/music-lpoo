@@ -24,7 +24,12 @@
         </c:if>
         <div class="mt-lg-5">
             <h2>${artista.nome}</h2>
-            <p>${musicCount} músicas</p>
+            <c:if test="${empty musicCount}">
+                <p>0 músicas</p>
+            </c:if>
+            <c:if test="${not empty musicCount}">    
+                <p>${musicCount} músicas</p>
+            </c:if>
             
             <nav class="navbar navbar-light bg-light px-5" style="border-radius:5px">
                 <a class="btn btn-light" href="./music/register.jsp">Cadastrar nova música</a>
@@ -42,7 +47,9 @@
                 <input type="hidden" name="page" value="0">
               </div>
             </form>
-            
+            <c:if test="${empty musicas}">
+                <strong>Nenhuma música encontrada
+            </c:if>
             <c:forEach var="m" items="${musicas}">
                 <div class="card my-3">
                     <strong class="card-header">${m.title} (${m.ano})</strong>
@@ -61,11 +68,13 @@
             </div>
             
             <nav aria-label="Page navigation example">
+            <c:if test="${not empty musicCount}">
               <ul class="pagination">
                   <c:forEach var="indexPage" begin="0" end="${musicCount}" >
                     <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=${indexPage}&searchParam=${param.searchParam}">${indexPage+1}</a></li>
                 </c:forEach>
               </ul>
+            </c:if>
             </nav>
         </div>
     </body>
