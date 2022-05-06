@@ -28,8 +28,8 @@ public class ConnectionFactory implements AutoCloseable {
             + "id SERIAL PRIMARY KEY NOT NULL,"
             + "titulo varchar(50) NOT NULL,"
             + "duracao varchar(50) NOT NULL,"
-            + "idGenero varchar(50) NOT NULL,"  
-            + "letra varchar(1000) NOT NULL,"
+            + "idGenero varchar(50) NOT NULL,"
+            + "letra text NOT NULL,"
             + "visualizacoes int NOT NULL,"
             + "idAlbum int NOT NULL,"
             + "spotify varchar(150),"
@@ -40,7 +40,7 @@ public class ConnectionFactory implements AutoCloseable {
             + "musicId int NOT NULL,"
             + "artistaId int NOT NULL,"
             + "CONSTRAINT fk_ArtMusicMusic foreign key (musicId) references musica(id),"
-            + "CONSTRAINT fk_ArtMusicAlbum foreign key (artistaId) references album(id));";
+            + "CONSTRAINT fk_ArtMusicAlbum foreign key (artistaId) references artista(id));";
     private static final String CREATE_ALBUM = "CREATE TABLE IF NOT EXISTS album ("
             + "id SERIAL PRIMARY KEY NOT NULL,"
             + "nome varchar(50) NOT NULL UNIQUE,"
