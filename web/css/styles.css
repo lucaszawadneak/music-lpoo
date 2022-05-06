@@ -96,7 +96,9 @@ hr {
   border: 0;
   opacity: 0.25;
 }
-
+.ms-choice>span.placeholder{
+    background-color: #FFFFFF !important;  
+}
 hr:not([size]) {
   height: 1px;
 }

@@ -4,8 +4,11 @@
  */
 package dao;
 
+import beans.Album;
 import beans.Artist;
 import beans.Music;
+import beans.Link;
+import beans.Genero;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -65,10 +68,14 @@ public class MusicDAO implements DAO<Music> {
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 Music m = new Music();
-//                a.setId(Integer.parseInt(rs.getString("id")));
-//                a.setNome(rs.getString("nome"));
-//                a.setPais(rs.getString("pais"));
-//                a.setDescricao(rs.getString("descricao"));
+                m.setId(rs.getInt("id"));
+                m.setTitle(rs.getString("title"));
+                m.setArtista((Artist)rs.getObject("artist"));
+                m.setDuration(rs.getString("duration"));
+                m.setLyrics(rs.getString("lyrics"));
+                m.setLinks((Link)rs.getObject("link"));
+                m.setGenero((Genero)rs.getObject("genero"));
+                m.setAlbum((Album)rs.getObject("album"));
                 list.add(m);
             }
             return list;

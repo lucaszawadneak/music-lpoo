@@ -1,3 +1,16 @@
+<<<<<<< Updated upstream
+=======
+<%-- 
+    Document   : index
+    Created on : May 2, 2022, 4:20:47 PM
+    Authors     : Gustavo Schwanka GRR20193748
+                  Leonardo Xavier da Silva Moraes GRR20204488
+                  Lucas Cassilha Zawadneak GRR20200141
+                  Ludimilla Krautzuk GRR20204467
+--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+>>>>>>> Stashed changes
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -28,10 +41,15 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href="./artist/register.jsp">CADASTRO ARTISTA</a></li>
+<<<<<<< Updated upstream
                         <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+=======
+                        <li class="nav-item"><a class="nav-link" href="./album/register.jsp">CADASTRO ALBUM</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./music/register.jsp">CADASTRO MUSICA</a></li>
+>>>>>>> Stashed changes
                     </ul>
                 </div>
             </div>
