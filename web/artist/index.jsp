@@ -27,8 +27,8 @@
             <p>${musicCount} músicas</p>
             
             <nav class="navbar navbar-light bg-light px-5" style="border-radius:5px">
-                <a class="btn btn-light" href="MusicController?action=store">Cadastrar nova música</a>
-                <a class="btn btn-light" href="RecordController?action=store">Cadastrar novo álbum</a>
+                <a class="btn btn-light" href="./music/register.jsp">Cadastrar nova música</a>
+                <a class="btn btn-light" href="./album/register.jsp">Cadastrar novo álbum</a>
                 <a class="btn btn-light" href="./index.jsp">Voltar para página inicial</a>
             </nav>
             

@@ -28,16 +28,22 @@ public class ConnectionFactory implements AutoCloseable {
             + "id SERIAL PRIMARY KEY NOT NULL,"
             + "titulo varchar(50) NOT NULL,"
             + "duracao varchar(50) NOT NULL,"
-            + "idGenero varchar(50) NOT NULL,"
+            + "idGenero varchar(50) NOT NULL,"  
             + "letra varchar(1000) NOT NULL,"
             + "visualizacoes int NOT NULL,"
             + "idAlbum int NOT NULL,"
             + "spotify varchar(150),"
             + "deezer varchar(150),"
             + "appleMusic varchar(150));";
+    private static final String CREATE_ARTIST_MUSIC = "CREATE TABLE IF NOT EXISTS artistMusic("
+            + "id SERIAL PRIMARY KEY NOT NULL,"
+            + "musicId int NOT NULL,"
+            + "artistaId int NOT NULL,"
+            + "CONSTRAINT fk_ArtMusicMusic foreign key (musicId) references musica(id),"
+            + "CONSTRAINT fk_ArtMusicAlbum foreign key (artistaId) references album(id));";
     private static final String CREATE_ALBUM = "CREATE TABLE IF NOT EXISTS album ("
             + "id SERIAL PRIMARY KEY NOT NULL,"
-            + "nome varchar(50) NOT NULL,"
+            + "nome varchar(50) NOT NULL UNIQUE,"
             + "ano INTEGER NOT NULL);";  
     private static final String CREATE_GENERO = "CREATE TABLE IF NOT EXISTS genero("
             + "id SERIAL PRIMARY KEY NOT NULL,"
@@ -56,6 +62,8 @@ public class ConnectionFactory implements AutoCloseable {
                 create_artist = con.prepareStatement(CREATE_ALBUM);
                 create_artist.executeUpdate();
                 create_artist = con.prepareStatement(CREATE_GENERO);
+                create_artist.executeUpdate();
+                create_artist = con.prepareStatement(CREATE_ARTIST_MUSIC);
                 create_artist.executeUpdate();
             } catch(ClassNotFoundException e){
                 throw new Exception("Driver não encontrado.",e);
