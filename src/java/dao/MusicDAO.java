@@ -50,7 +50,8 @@ public class MusicDAO implements DAO<Music> {
     // OFFSET = pula a busca por x itens = paginação
     public ArrayList<Music> findByArtistPaginated(Integer artist_id,Integer page,String searchParam) throws Exception{
         Integer offset = page * 10;
-        String sql = "SELECT * FROM music WHERE artist_id = ?";
+        String sql = "SELECT * FROM artistMusic am WHERE am.artistId = ?"
+                + "INNER JOIN music m ON m.id = am.musicId ";
         if(searchParam != null)
             sql += " AND title LIKE ?";
         sql += " LIMIT 10 OFFSET ?";
