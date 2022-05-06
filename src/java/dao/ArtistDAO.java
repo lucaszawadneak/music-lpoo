@@ -95,4 +95,28 @@ public class ArtistDAO implements DAO<Artist>{
         }
     }
     
+    public ArrayList<Artist> getMusicArtists(Integer music_id) throws Exception{
+        String sql = "SELECT * FROM artistMusic am WHERE am.musicId = ?"
+                + "INNER JOIN music m ON m.id=?";
+        ArrayList<Artist> list = new ArrayList<>();;
+        try{
+            PreparedStatement ps = this.con.prepareStatement(sql);
+            ps.setInt(1,music_id);
+            
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Artist a = new Artist();
+                a.setId(Integer.parseInt(rs.getString("id")));
+                a.setNome(rs.getString("nome"));
+                a.setPais(rs.getString("pais"));
+                a.setDescricao(rs.getString("descricao"));
+                list.add(a);
+            }
+            return list;
+        } catch (Exception e){
+            System.out.println(e);
+            throw e;
+        }
+    }
+    
 }

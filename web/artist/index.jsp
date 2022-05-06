@@ -62,15 +62,9 @@
             
             <nav aria-label="Page navigation example">
               <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=1&searchParam=${param.searchParam}">1</a></li>
-                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=2&searchParam=${param.searchParam}">2</a></li>
-                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=3&searchParam=${param.searchParam}">3</a></li>
-                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=4&searchParam=${param.searchParam}">4</a></li>
-                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=5&searchParam=${param.searchParam}">5</a></li>
-                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=6&searchParam=${param.searchParam}">6</a></li>
-                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=7&searchParam=${param.searchParam}">7</a></li>
-                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=8&searchParam=${param.searchParam}">8</a></li>
-                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=9&searchParam=${param.searchParam}">9</a></li>
+                  <c:forEach var="indexPage" begin="0" end="${musicCount}" >
+                    <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=${indexPage}&searchParam=${param.searchParam}">${indexPage+1}</a></li>
+                </c:forEach>
               </ul>
             </nav>
         </div>
