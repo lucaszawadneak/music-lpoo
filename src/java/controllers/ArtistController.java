@@ -57,8 +57,12 @@ public class ArtistController extends HttpServlet {
                 aDAO.insert(a);
 
                 request.setAttribute("artista", a);
+                
+                
+                RequestDispatcher selecionar = request.getRequestDispatcher("/artist/selecionarArtista.jsp");
 
-                rd.forward(request, response);
+
+                selecionar.forward(request, response);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("Erro ao criar artista");
