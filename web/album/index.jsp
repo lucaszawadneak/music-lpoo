@@ -1,7 +1,10 @@
 <%-- 
-    Document   : index
-    Created on : 06/05/2022, 15:47:19
-    Author     : Nicole
+    Document   : addAlbum
+    Created on : 06/05/2022, 13:13:43
+    Author     :  Gustavo Schwanka GRR20193748
+                  Leonardo Xavier da Silva Moraes GRR20204488
+                  Lucas Cassilha Zawadneak GRR20200141
+                  Ludimilla Krautzuk GRR20204467
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
