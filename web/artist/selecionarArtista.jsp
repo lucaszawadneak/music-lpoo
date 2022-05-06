@@ -32,7 +32,7 @@
         
         <div class="card p-3">
             <c:forEach var="a" items="${artistas}">
-                <c:if test="${empty page}">
+                <c:if test="${empty redirectPage}">
                     <a class="btn btn-primary m-1" href="ArtistController?id=${a.id}">
                         <strong>${a.nome}</strong>
                     </a>
