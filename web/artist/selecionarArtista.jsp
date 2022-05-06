@@ -1,7 +1,10 @@
 <%-- 
     Document   : selecionarArtista
     Created on : May 5, 2022, 5:47:19 PM
-    Author     : lucas
+    Author     :  Gustavo Schwanka GRR20193748
+                  Leonardo Xavier da Silva Moraes GRR20204488
+                  Lucas Cassilha Zawadneak GRR20200141
+                  Ludimilla Krautzuk GRR20204467
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

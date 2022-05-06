@@ -9,21 +9,39 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 /**
  *
- * @author lucas
+ * @authors Gustavo Schwanka GRR20193748
+            Leonardo Xavier da Silva Moraes GRR20204488
+            Lucas Cassilha Zawadneak GRR20200141
+            Ludimilla Krautzuk GRR20204467
  */
 public class ConnectionFactory implements AutoCloseable {
     private static String DRIVER = "org.postgresql.Driver";
     private static String URL = "jdbc:postgresql://localhost:5432/java";
     private static String LOGIN = "postgres";
-    private static String PASSWORD = "postgres";
-    
-    private static String CREATE_ARTIST = "CREATE TABLE IF NOT EXISTS artista ("
-            + "id SERIAL,"
+    private static String PASSWORD = "123123";
+    private static final  String CREATE_ARTIST = "CREATE TABLE IF NOT EXISTS artista ("
+            + "id SERIAL PRIMARY KEY NOT NULL,"
             + "nome varchar(50) NOT NULL,"
             + "pais varchar(50) NOT NULL,"
-            + "descricao varchar(150) NOT NULL) ";
-    private static String CREATE_MUSIC = "";
-    
+            + "descricao varchar(150) NOT NULL); ";
+    private static final String CREATE_MUSIC = "CREATE TABLE IF NOT EXISTS musica ("
+            + "id SERIAL PRIMARY KEY NOT NULL,"
+            + "titulo varchar(50) NOT NULL,"
+            + "duracao varchar(50) NOT NULL,"
+            + "idGenero varchar(50) NOT NULL,"
+            + "letra varchar(1000) NOT NULL,"
+            + "visualizacoes int NOT NULL,"
+            + "idAlbum int NOT NULL,"
+            + "spotify varchar(150),"
+            + "deezer varchar(150),"
+            + "appleMusic varchar(150));";
+    private static final String CREATE_ALBUM = "CREATE TABLE IF NOT EXISTS album ("
+            + "id SERIAL PRIMARY KEY NOT NULL,"
+            + "nome varchar(50) NOT NULL,"
+            + "ano INTEGER NOT NULL);";  
+    private static final String CREATE_GENERO = "CREATE TABLE IF NOT EXISTS genero("
+            + "id SERIAL PRIMARY KEY NOT NULL,"
+            + "nome varchar(50) NOT NULL);";
     private Connection con = null;
     
     public Connection getConnection() throws Exception{
@@ -31,10 +49,13 @@ public class ConnectionFactory implements AutoCloseable {
             try{
                 Class.forName(DRIVER);
                 con = DriverManager.getConnection(URL,LOGIN,PASSWORD);
-                
                 PreparedStatement create_artist = con.prepareStatement(CREATE_ARTIST);
-//                PreparedStatement create_artist = con.prepareStatement(CREATE_MUSIC);
-                
+                create_artist.executeUpdate();
+                create_artist = con.prepareStatement(CREATE_MUSIC);
+                create_artist.executeUpdate();
+                create_artist = con.prepareStatement(CREATE_ALBUM);
+                create_artist.executeUpdate();
+                create_artist = con.prepareStatement(CREATE_GENERO);
                 create_artist.executeUpdate();
             } catch(ClassNotFoundException e){
                 throw new Exception("Driver não encontrado.",e);
@@ -44,7 +65,6 @@ public class ConnectionFactory implements AutoCloseable {
         }
         return con;
     }
-
     @Override
     public void close() throws Exception {
         if(con!= null){

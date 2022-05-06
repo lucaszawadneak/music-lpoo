@@ -14,7 +14,10 @@ import java.util.List;
 
 /**
  *
- * @author lucas
+ * @authors Gustavo Schwanka GRR20193748
+            Leonardo Xavier da Silva Moraes GRR20204488
+            Lucas Cassilha Zawadneak GRR20200141
+            Ludimilla Krautzuk GRR20204467
  */
 public class MusicDAO implements DAO<Music> {
     private static final String INSERT = "";
