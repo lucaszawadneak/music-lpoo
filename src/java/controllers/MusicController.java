@@ -5,10 +5,12 @@
  */
 package controllers;
 
+import beans.Album;
 import beans.Genero;
 import beans.Link;
 import beans.Music;
 import connection.ConnectionFactory;
+import dao.ArtistDAO;
 import dao.MusicDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -41,12 +43,14 @@ public class MusicController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        RequestDispatcher rd = request.getRequestDispatcher("/artist/index.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/music/index.jsp");
         
         String action = request.getParameter("action");
         ConnectionFactory conn = new ConnectionFactory();
 
         if("store".equals(action)){
+            Link links = null;
+            
             String nome = request.getParameter("nome");
             String artista = request.getParameter("artista");
             String duracao = request.getParameter("duracao");
@@ -55,6 +59,8 @@ public class MusicController extends HttpServlet {
             String linkSpotify = request.getParameter("link_spotify");
             String linkDeezer = request.getParameter("link_deezer");
             String linkApple = request.getParameter("link_apple");
+            Album album = new Album(nome,2022);
+            Genero genero = new Genero(0,generos);
             if (linkSpotify == null){
                 List<String> list = new ArrayList<>();
                 list.add(linkApple);
@@ -62,7 +68,7 @@ public class MusicController extends HttpServlet {
                 List<String> types = new ArrayList<>();
                 types.add("AppleMusic");
                 types.add("Deezer");
-                Link links = new Link(list,types);
+                links = new Link(list,types);
             } else if (linkDeezer == null){
                 List<String> list = new ArrayList<>();
                 list.add(linkSpotify);
@@ -70,7 +76,7 @@ public class MusicController extends HttpServlet {
                 List<String> types = new ArrayList<>();
                 types.add("Spotify");
                 types.add("AppleMusic");
-                Link links = new Link(list,types);
+                links = new Link(list,types);
             } else if (linkApple == null){
                 List<String> list = new ArrayList<>();
                 list.add(linkSpotify);
@@ -78,34 +84,33 @@ public class MusicController extends HttpServlet {
                 List<String> types = new ArrayList<>();
                 types.add("Spotify");
                 types.add("Deezer");
-                Link links = new Link(list,types);
+                links = new Link(list,types);
             } else{
-                Link links = new Link(linkSpotify, linkDeezer, linkApple);
+                links = new Link(linkSpotify, linkDeezer, linkApple);
             }
-            Music m = new Music();
             
             try{
+                
+                ArtistDAO aDAO = new ArtistDAO(conn.getConnection());
                 MusicDAO mDAO = new MusicDAO(conn.getConnection());
                 mDAO.insert(m);
                     
-                request.setAttribute("artista", a);
+                request.setAttribute("musica", m);
                 
                 rd.forward(request, response);
             } catch (Exception e){
                 e.printStackTrace();
-                System.out.println("Erro ao criar artista");
+                System.out.println("Erro ao criar musica");
             }
             
         } else if("search".equals(action)){
-            request.setAttribute("artistas", new ArrayList<>());
+            request.setAttribute("musicas", new ArrayList<>());
             String searchParam = request.getParameter("searchParam");
-            System.out.println("oi");
 
             try{
-                
                 MusicDAO m = new MusicDAO(conn.getConnection());
 
-                ArrayList<Artist> artistas = aDAO.search(searchParam);
+                ArrayList<Music> artistas = m.search(searchParam);
 
                 request.setAttribute("artistas", artistas);
 
@@ -118,40 +123,22 @@ public class MusicController extends HttpServlet {
             }
                     
         } else {
-            String artistID = request.getParameter("id");
-            String page = request.getParameter("page");
-            String searchParam = request.getParameter("searchParam");
+            String musicID = request.getParameter("id");
             
-            System.out.println(searchParam);
-            if(artistID == null) {
+            if(musicID == null) {
                 response.sendRedirect("./index.jsp");
             }
             
             try{
-                Music = new ArtistDAO(conn.getConnection());
-                Artist a = aDAO.find(Integer.parseInt(artistID));
+                MusicDAO mDAO = new MusicDAO(conn.getConnection());
+                Music m = mDAO.find(Integer.parseInt(musicID));
                 
-                if(a == null){
-                    response.sendRedirect("./index.jsp");
-                }
-                
-                request.setAttribute("artista", a);
-//                MusicDAO mDAO = new MusicDAO(conn.getConnection());
-//               
-//                Integer musicCount = mDAO.getArtistMusicCount(a.getId());
-//                
-//                request.setAttribute("musicCount", musicCount);
-                Integer localPage = 0;
-                if(page != null){
-                    localPage = Integer.parseInt(page);
-                }
-//                ArrayList<Music> musicList = mDAO.findByArtistPaginated(a.getId(), localPage, null);
-                
-//                request.setAttribute("musicList", musicList);
+                request.setAttribute("musica", m);
+
                 rd.forward(request, response);
             } catch (Exception e){
                 e.printStackTrace();
-                System.out.println("Erro ao buscar músicas");
+                System.out.println("Erro ao buscar música");
                 System.out.println(e);
             }
         }

@@ -1,7 +1,10 @@
 <%-- 
     Document   : index
     Created on : May 2, 2022, 4:20:47 PM
-    Author     : lucas
+    Author     :  Gustavo Schwanka GRR20193748
+                  Leonardo Xavier da Silva Moraes GRR20204488
+                  Lucas Cassilha Zawadneak GRR20200141
+                  Ludimilla Krautzuk GRR20204467
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -16,16 +19,23 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
     </head>
     <body id="page-top" class="container">
-        <c:if test="${empty artista}">
+        <c:if test="${empty artista.id}">
             <c:redirect url="/index.jsp" />
         </c:if>
         <div class="mt-lg-5">
             <h2>${artista.nome}</h2>
-            <p>${musicCount} músicas</p>
+            <c:if test="${empty musicCount}">
+                <p>0 músicas</p>
+            </c:if>
+            <c:if test="${not empty musicCount}">    
+                <p>${musicCount} músicas</p>
+            </c:if>
+                
+            <p>${artista.descricao}</p>
             
             <nav class="navbar navbar-light bg-light px-5" style="border-radius:5px">
-                <a class="btn btn-light" href="MusicController?action=store">Cadastrar nova música</a>
-                <a class="btn btn-light" href="RecordController?action=store">Cadastrar novo álbum</a>
+                <a class="btn btn-light" href="./music/register.jsp">Cadastrar nova música</a>
+                <a class="btn btn-light" href="./album/register.jsp">Cadastrar novo álbum</a>
                 <a class="btn btn-light" href="./index.jsp">Voltar para página inicial</a>
             </nav>
             
@@ -39,7 +49,9 @@
                 <input type="hidden" name="page" value="0">
               </div>
             </form>
-            
+            <c:if test="${empty musicas}">
+                <strong>Nenhuma música encontrada
+            </c:if>
             <c:forEach var="m" items="${musicas}">
                 <div class="card my-3">
                     <strong class="card-header">${m.title} (${m.ano})</strong>
@@ -58,17 +70,13 @@
             </div>
             
             <nav aria-label="Page navigation example">
+            <c:if test="${not empty musicCount}">
               <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=1&searchParam=${param.searchParam}">1</a></li>
-                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=2&searchParam=${param.searchParam}">2</a></li>
-                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=3&searchParam=${param.searchParam}">3</a></li>
-                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=4&searchParam=${param.searchParam}">4</a></li>
-                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=5&searchParam=${param.searchParam}">5</a></li>
-                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=6&searchParam=${param.searchParam}">6</a></li>
-                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=7&searchParam=${param.searchParam}">7</a></li>
-                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=8&searchParam=${param.searchParam}">8</a></li>
-                <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=9&searchParam=${param.searchParam}">9</a></li>
+                  <c:forEach var="indexPage" begin="0" end="${musicCount}" >
+                    <li class="page-item"><a class="page-link" href="ArtistController?id=${artista.id}&page=${indexPage}&searchParam=${param.searchParam}">${indexPage+1}</a></li>
+                </c:forEach>
               </ul>
+            </c:if>
             </nav>
         </div>
     </body>

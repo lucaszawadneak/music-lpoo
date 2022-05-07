@@ -16,7 +16,7 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
     </head>
     <body id="page-top" style="background-color:#0A0708" class="container">
-        <c:if test="${empty artista}">
+        <c:if test="${empty musica}">
             <c:redirect url="/index.jsp" />
         </c:if>
         <div class="mt-lg-5">

@@ -17,13 +17,15 @@ import java.util.List;
 
 /**
  *
- * @author lucas
+ * @authors Gustavo Schwanka GRR20193748
+            Leonardo Xavier da Silva Moraes GRR20204488
+            Lucas Cassilha Zawadneak GRR20200141
+            Ludimilla Krautzuk GRR20204467
  */
 public class MusicDAO implements DAO<Music> {
     private static final String INSERT = "";
     private static final String FIND_ONE = "";
-    private static final String FIND_PAGINATED = "SELECT * FROM music WHERE artist_id = ? LIMIT 10"
-            + "OFFSET ?";
+    private static final String SEARCH = "SELECT * FROM music WHERE titulo LIKE ?";
     
     private Connection con = null;
     
@@ -41,7 +43,7 @@ public class MusicDAO implements DAO<Music> {
 
     @Override
     public void insert(Music t) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
     
@@ -50,13 +52,15 @@ public class MusicDAO implements DAO<Music> {
     // OFFSET = pula a busca por x itens = paginação
     public ArrayList<Music> findByArtistPaginated(Integer artist_id,Integer page,String searchParam) throws Exception{
         Integer offset = page * 10;
-        String sql = "SELECT * FROM music WHERE artist_id = ?";
+        String sql = "SELECT * FROM artistmusic am "
+                + "INNER JOIN musica m ON m.id = am.musicid "
+                + "WHERE am.artistaid = ?";
         if(searchParam != null)
-            sql += " AND title LIKE ?";
+            sql += " AND m.title LIKE ?";
         sql += " LIMIT 10 OFFSET ?";
         ArrayList<Music> list = new ArrayList<>();;
         try{
-            PreparedStatement ps = this.con.prepareStatement(FIND_PAGINATED);
+            PreparedStatement ps = this.con.prepareStatement(sql);
             ps.setInt(1,artist_id);
             if(searchParam != null){
                 ps.setString(2,"%" + searchParam + "%");
@@ -86,7 +90,7 @@ public class MusicDAO implements DAO<Music> {
     }
     
     public Integer getArtistMusicCount(Integer artist_id) throws Exception{
-        String sql = "SELECT COUNT(*) as total FROM music WHERE artist_id = ?";
+        String sql = "SELECT COUNT(*) as total FROM artistmusic WHERE artistaid = ?";
         try{
             PreparedStatement ps = this.con.prepareStatement(sql);
             ps.setInt(1,artist_id);
@@ -103,5 +107,23 @@ public class MusicDAO implements DAO<Music> {
         }
     }
     
-    
+    public ArrayList<Music> search(String search) throws Exception {
+        ArrayList<Music> musicas = new ArrayList<>();
+        try{
+            PreparedStatement ps = this.con.prepareStatement(SEARCH);
+            ps.setString(1,"%" + search + "%");
+            
+            
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                
+            }
+            return musicas;
+        } catch (Exception e){
+            System.out.println(e);
+            throw e;
+        }
+    }
+   
+     
 }

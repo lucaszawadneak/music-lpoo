@@ -30,7 +30,6 @@
                 <form id="music" name="music" action="../MusicController" method="POST">
                     <input name="action" value="store" type="hidden"/>
                     <input class="form-control mb-2" placeholder="Nome" maxlength="50" name="nome" required/>
-                    <input class="form-control mb-2" placeholder="Artista" maxlength="50" name="artista" required/>
                     <input class="form-control mb-2" placeholder="Duração" maxlength="50" name="duracao" required/>
                     <textarea class="form-control mb-2" placeholder="Letra" maxlength="1000" name="letra" required></textarea>
                     <input class="form-control mb-2" placeholder="Link Spotify" maxlength="50" name="link_spotify" required/>
@@ -44,9 +43,10 @@
                         <option value="Rap">Rap</option>
                     </select>
 
-                    <input class="form-control mb-2" placeholder="Álbum" maxlength="50" name="duracao" required/>
+                    <input class="form-control mb-2" placeholder="Álbum" maxlength="50" name="album" required/>
 
-
+                    <input class="form-control mb-2" placeholder="Artista" maxlength="50" required value="${artista.nome}"/>
+                    <input type="hidden" value="${artista}" name="artista"/>
                 </form>
                 <button type="submit" class="btn btn-warning">Cadastrar</button>
                 <button type="submit" class="btn btn-secondary">Cancelar</button>

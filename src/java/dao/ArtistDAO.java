@@ -8,7 +8,10 @@ import beans.Artist;
 
 /**
  *
- * @author lucas
+ * @authors Gustavo Schwanka GRR20193748
+            Leonardo Xavier da Silva Moraes GRR20204488
+            Lucas Cassilha Zawadneak GRR20200141
+            Ludimilla Krautzuk GRR20204467
  */
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -86,6 +89,31 @@ public class ArtistDAO implements DAO<Artist>{
                 artistas.add(a);
             }
             return artistas;
+        } catch (Exception e){
+            System.out.println(e);
+            throw e;
+        }
+    }
+    
+    public ArrayList<Artist> getMusicArtists(Integer music_id) throws Exception{
+        String sql = "SELECT * FROM artistmusic am "
+                + "INNER JOIN music m ON m.id=? "
+                + "WHERE am.musicId = ?";
+        ArrayList<Artist> list = new ArrayList<>();;
+        try{
+            PreparedStatement ps = this.con.prepareStatement(sql);
+            ps.setInt(1,music_id);
+            
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Artist a = new Artist();
+                a.setId(Integer.parseInt(rs.getString("id")));
+                a.setNome(rs.getString("nome"));
+                a.setPais(rs.getString("pais"));
+                a.setDescricao(rs.getString("descricao"));
+                list.add(a);
+            }
+            return list;
         } catch (Exception e){
             System.out.println(e);
             throw e;
