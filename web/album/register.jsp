@@ -21,7 +21,7 @@
     <body id="page-top" class="container"></body>
         <div class="mt-lg-5">
             <h2>Cadastrar album</h2>
-            <form action="../AlbumController" method="POST">
+            <form action="../RecordController" method="POST">
                 <input name="action" value="store" type="hidden"/>
                 <input class="form-control mb-2" placeholder="Nome" maxlength="50" name="nome" required/>
                 <select name="ano" data-component="date" class="form-control mb-2" required>

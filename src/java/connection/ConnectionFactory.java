@@ -18,7 +18,7 @@ public class ConnectionFactory implements AutoCloseable {
     private static String DRIVER = "org.postgresql.Driver";
     private static String URL = "jdbc:postgresql://localhost:5432/java";
     private static String LOGIN = "postgres";
-    private static String PASSWORD = "postgres";
+    private static String PASSWORD = "123123";
     private static final  String CREATE_ARTIST = "CREATE TABLE IF NOT EXISTS artista ("
             + "id SERIAL PRIMARY KEY NOT NULL,"
             + "nome varchar(50) NOT NULL,"
@@ -44,7 +44,8 @@ public class ConnectionFactory implements AutoCloseable {
     private static final String CREATE_ALBUM = "CREATE TABLE IF NOT EXISTS album ("
             + "id SERIAL PRIMARY KEY NOT NULL,"
             + "nome varchar(50) NOT NULL UNIQUE,"
-            + "ano INTEGER NOT NULL);";  
+            + "ano INTEGER NOT NULL,"
+            + "visualizacoes INTEGER NOT NULL);";  
     private static final String CREATE_GENERO = "CREATE TABLE IF NOT EXISTS genero("
             + "id SERIAL PRIMARY KEY NOT NULL,"
             + "nome varchar(50) NOT NULL);";

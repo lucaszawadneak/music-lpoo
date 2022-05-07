@@ -8,8 +8,10 @@ package controllers;
 import beans.Album;
 import connection.ConnectionFactory;
 import dao.AlbumDAO;
+import dao.MusicDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -49,6 +51,7 @@ public class RecordController extends HttpServlet {
                 Album al = new Album(request.getParameter("nome"),Integer.parseInt(request.getParameter("ano")));
                 AlbumDAO alD = new AlbumDAO(conn.getConnection());
                 alD.insert(al);
+                al = alD.findByName(al.getNome()); // pega pelo nome pra ter o id. Será passado para inserir músicas
                 request.setAttribute("album", al);
                 rd.forward(request, response);
             } catch (Exception e) {
@@ -56,15 +59,54 @@ public class RecordController extends HttpServlet {
                 System.out.println("Erro ao criar album");
             }
         } else if ("search".equals(action)) {
-            
-        } else if ("update".equals(action)) {
+            request.setAttribute("albuns", new ArrayList<>());
+            String searchParam = request.getParameter("searchParam");
+            try {
+                AlbumDAO aDAO = new AlbumDAO(conn.getConnection());
+                ArrayList<Album> albums = aDAO.search(searchParam);
+                request.setAttribute("albuns", albums);
+                RequestDispatcher search = request.getRequestDispatcher("/album/selecionarAlbum.jsp");
+                search.forward(request, response);    
+            }catch(Exception e) {
+                System.out.println(e);
+                e.printStackTrace();
+            }
+        }else{
+            String albumID = request.getParameter("id");
+            String page = request.getParameter("page");
+            if (albumID == null) {
+                response.sendRedirect("./index.jsp");
+            }
 
-        } else if ("delete".equals(action)){
-            
-        } else if ("show".equals(action)){
-            
-        }else {
-             response.sendRedirect("./index.jsp");
+            try {
+                AlbumDAO aDAO = new AlbumDAO(conn.getConnection());
+                Album al = aDAO.find(Integer.parseInt(albumID));
+
+                if (al == null) {
+                    response.sendRedirect("./index.jsp");
+                }
+
+                request.setAttribute("album", al);
+/*
+                MusicDAO mDAO = new MusicDAO(conn.getConnection());
+                
+               Integer musicCount = mDAO.getArtistMusicCount(al.getId());
+                
+                request.setAttribute("musicCount", musicCount);
+                
+                Integer localPage = 0;
+                if (page != null) {
+                    localPage = Integer.parseInt(page);
+                }
+                ArrayList<Music> musicList = mDAO.findByArtistPaginated(a.getId(), localPage,null);
+                request.setAttribute("musicList", musicList);
+*/               
+                rd.forward(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("Erro ao buscar músicas");
+                System.out.println(e);
+            }
         }
     }
 
