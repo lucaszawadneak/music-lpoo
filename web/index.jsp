@@ -55,9 +55,9 @@
             <div class="container">
                 <div class="masthead-subheading">Você gosta de música? Você quer ser ouvido por várias pessoas?</div>
                 <div class="masthead-heading text-uppercase">Registre sua música</div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Registrar Album</a>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Registrar Música single</a>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Registrar Artista</a>
+                <a class="btn btn-primary btn-xl text-uppercase" href="album/register.jsp">Registrar Album</a>
+                <a class="btn btn-primary btn-xl text-uppercase" href="music/register.jsp">Registrar Música single</a>
+                <a class="btn btn-primary btn-xl text-uppercase" href="artist/register.jsp">Registrar Artista</a>
             </div>
         </header>
 
