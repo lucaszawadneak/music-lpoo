@@ -1,4 +1,12 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%-- 
+    Document   : index
+    Created on : May 2, 2022, 4:20:47 PM
+    Authors     : Gustavo Schwanka GRR20193748
+                  Leonardo Xavier da Silva Moraes GRR20204488
+                  Lucas Cassilha Zawadneak GRR20200141
+                  Ludimilla Krautzuk GRR20204467
+--%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -6,7 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Músicas</title>
+        <title>Mï¿½sicas</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -29,9 +37,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#portfolio">Ranking de Músicas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#portfolio">Ranking de Mï¿½sicas</a></li>
                         <li class="nav-item"><a class="nav-link" href="#ranking">Ranking de Album</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#team">Pesquisar Música</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#team">Pesquisar Mï¿½sica</a></li>
                         <li class="nav-item"><a class="nav-link" href="#team">Pesquisar Album</a></li>
                         <li class="nav-item"><a class="nav-link" href="#team">Pesquisar Artista</a></li>-->
                         <li class="nav-item"><a class="nav-link" href="#team">Equipe</a></li>
@@ -42,10 +50,10 @@
         <!-- Masthead-->
         <header class="masthead">
             <div class="container">
-                <div class="masthead-subheading">Você gosta de música? Você quer ser ouvido por várias pessoas?</div>
-                <div class="masthead-heading text-uppercase">Registre sua música</div>
+                <div class="masthead-subheading">Vocï¿½ gosta de mï¿½sica? Vocï¿½ quer ser ouvido por vï¿½rias pessoas?</div>
+                <div class="masthead-heading text-uppercase">Registre sua mï¿½sica</div>
                 <a class="btn btn-primary btn-xl text-uppercase" href="#services">Registrar Album</a>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Registrar Música single</a>
+                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Registrar Mï¿½sica single</a>
                 <a class="btn btn-primary btn-xl text-uppercase" href="#services">Registrar Artista</a>
             </div>
         </header>
@@ -54,8 +62,8 @@
         <section class="page-section bg-light" id="portfolio">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Músicas</h2>
-                    <h3 class="section-subheading text-muted">Músicas mais ouvidas</h3>
+                    <h2 class="section-heading text-uppercase">Mï¿½sicas</h2>
+                    <h3 class="section-subheading text-muted">Mï¿½sicas mais ouvidas</h3>
                 </div>
                 <div class="row">
                       <c:forEach var = "i" begin = "1" end = "6">
