@@ -6,10 +6,12 @@
 package controllers;
 
 import beans.Album;
+import beans.Artist;
 import beans.Genero;
 import beans.Link;
 import beans.Music;
 import connection.ConnectionFactory;
+import dao.AlbumDAO;
 import dao.ArtistDAO;
 import dao.MusicDAO;
 import java.io.IOException;
@@ -59,8 +61,10 @@ public class MusicController extends HttpServlet {
             String linkSpotify = request.getParameter("link_spotify");
             String linkDeezer = request.getParameter("link_deezer");
             String linkApple = request.getParameter("link_apple");
-            Album album = new Album(nome,2022);
-            Genero genero = new Genero(0,generos);
+            String album_id = request.getParameter("album_id");
+            
+         
+            Genero genero = new Genero(0,"rock");
             if (linkSpotify == null){
                 List<String> list = new ArrayList<>();
                 list.add(linkApple);
@@ -89,10 +93,29 @@ public class MusicController extends HttpServlet {
                 links = new Link(linkSpotify, linkDeezer, linkApple);
             }
             
+            String artist_id = request.getParameter("artist_id");
+            
+            System.out.println(artist_id);
+            
             try{
                 
-                ArtistDAO aDAO = new ArtistDAO(conn.getConnection());
+                ArtistDAO artDAO = new ArtistDAO(conn.getConnection());
                 MusicDAO mDAO = new MusicDAO(conn.getConnection());
+                AlbumDAO albDAO = new AlbumDAO(conn.getConnection());
+                
+                Artist a = artDAO.find(Integer.parseInt(artist_id));
+                
+                Album album = null;
+                
+                if(album_id == null){
+                    album = new Album(nome,2022);
+                    
+                    albDAO.insert(album);
+                } else {
+                    album = albDAO.find(Integer.parseInt(album_id));
+                }
+                
+                Music m = new Music(letra, duracao, letra, album, generos, genero, a, links, 0);
                 mDAO.insert(m);
                     
                 request.setAttribute("musica", m);

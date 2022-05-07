@@ -20,11 +20,14 @@
     </head>
     <body class="container">
         <h2 class="mt-5">Selecionar Album</h2>
-        <form action="/music-lpoo/RecordController" method="POST">
+        <form action="/music-lpoo/RecordController" method="GET">
             <div class="input-group mb-3 mt-3">
                 <div class="input-group-prepend">
                   <button class="btn btn-outline-secondary" type="submit">Pesquisar</button>
                 </div>
+                <c:if test="${not empty param.redirectPage}">
+                    <input type="hidden" name="redirectPage" value="${param.redirectPage}"/>
+                </c:if>
                 <input type="text" class="form-control"name="searchParam" value="${param.searchParam}" minlength="3">
                 <input type="hidden" name="action" value="search"/>
               </div>
@@ -32,13 +35,13 @@
         
         <div class="card p-3">
             <c:forEach var="a" items="${albuns}">
-                <c:if test="${empty redirectPage}">
+                <c:if test="${empty param.redirectPage}">
                     <a class="btn btn-primary m-1" href="RecordController?id=${a.id}">
                         <strong>${a.nome}</strong>
                     </a>
                 </c:if>
-                <c:if test="${not empty redirectPage}">
-                    <a class="btn btn-primary m-1" href="${redirectPage}?id=${a.id}">
+                <c:if test="${not empty param.redirectPage}">
+                    <a class="btn btn-primary m-1" href="${param.redirectPage}?album_id=${a.id}">
                         <strong>${a.nome}</strong>
                     </a>
                 </c:if>

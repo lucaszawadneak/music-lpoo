@@ -23,7 +23,7 @@ import java.util.List;
             Ludimilla Krautzuk GRR20204467
  */
 public class MusicDAO implements DAO<Music> {
-    private static final String INSERT = "";
+    private static final String INSERT = "INSERT INTO musica (titulo,duracao,idgenero,letra,visualizaoes,idalbum,spotify,deezer,applemusic) VALUES (?,?,?,?,?,?,?,?,?)";
     private static final String FIND_ONE = "";
     private static final String SEARCH = "SELECT * FROM music WHERE titulo LIKE ?";
     
@@ -42,8 +42,23 @@ public class MusicDAO implements DAO<Music> {
     }
 
     @Override
-    public void insert(Music t) throws Exception {
-        
+    public void insert(Music m) throws Exception {
+        try{
+            PreparedStatement ps = this.con.prepareStatement(INSERT);
+            ps.setString(1,m.getTitle());
+            ps.setString(2,m.getDuration());
+            ps.setString(3,m.getGenero().getId());
+            ps.setString(4,m.getLyrics());
+            ps.setString(5,m.getVisualizacoes());
+            ps.setString(6,m.getAlbum().getId());
+//            ps.setString(7,m.getLinks().getLinkSpotify());
+//            ps.setString(8,m.getLinks().getLinkDeezer());
+//            ps.setString(9,m.getLinks().getLinkAppleMusic());
+            
+            ps.executeUpdate();
+        } catch (Exception e){
+            throw e;
+        }
     }
     
     
@@ -73,7 +88,7 @@ public class MusicDAO implements DAO<Music> {
             while(rs.next()){
                 Music m = new Music();
                 m.setId(rs.getInt("id"));
-                m.setTitle(rs.getString("title"));
+                m.setTitle(rs.getString("titulo"));
                 m.setArtista((Artist)rs.getObject("artist"));
                 m.setDuration(rs.getString("duration"));
                 m.setLyrics(rs.getString("lyrics"));

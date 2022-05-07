@@ -27,8 +27,10 @@
         <div style="margin-top: 100px; height: 600px">
             <div class="mt-lg-5">
                 <h2 style="color: #ffc800">Cadastrar música</h2>
-                <form id="music" name="music" action="../MusicController" method="POST">
+                <form action="../MusicController" method="POST">
                     <input name="action" value="store" type="hidden"/>
+                    <a href="/music-lpoo/artist/selecionarArtista.jsp?redirectPage=music/register.jsp" class="btn btn-primary mb-2">Selecionar Artista</a>
+                    <a href="/music-lpoo/album/selecionarAlbum.jsp?redirectPage=music/register.jsp" class="btn btn-primary mb-2">Selecionar Álbum</a>
                     <input class="form-control mb-2" placeholder="Nome" maxlength="50" name="nome" required/>
                     <input class="form-control mb-2" placeholder="Duração" maxlength="50" name="duracao" required/>
                     <textarea class="form-control mb-2" placeholder="Letra" maxlength="1000" name="letra" required></textarea>
@@ -43,13 +45,13 @@
                         <option value="Rap">Rap</option>
                     </select>
 
-                    <input class="form-control mb-2" placeholder="Álbum" maxlength="50" name="album" required/>
+                    <input class="form-control mb-2" placeholder="Álbum" name="album" disabled value="${param.album_id}  name="album_id"/>
 
-                    <input class="form-control mb-2" placeholder="Artista" maxlength="50" required value="${artista.nome}"/>
-                    <input type="hidden" value="${artista}" name="artista"/>
+                    <input class="form-control mb-2" placeholder="Artista" value="${param.artist_id}" name="artist_id"/>
+                
+                    <<button type="submit" class="btn btn-warning">Cadastrar</button>
+                    <a href="/music-lpoo/index.jsp" class="btn btn-secondary">Cancelar</a>
                 </form>
-                <button type="submit" class="btn btn-warning">Cadastrar</button>
-                <button type="submit" class="btn btn-secondary">Cancelar</button>
             </div>
         </div>
         <script>
