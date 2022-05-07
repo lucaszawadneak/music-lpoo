@@ -42,9 +42,16 @@
                     </a>
                 </c:if>
                 <c:if test="${not empty param.redirectPage}">
-                    <a class="btn btn-primary m-1" href="${param.redirectPage}?artist_id=${a.id}">
-                        <strong>${a.nome}</strong>
-                    </a>
+                    <c:if test="${not empty param.album_id}">
+                        <a class="btn btn-primary m-1" href="${param.redirectPage}?artist_id=${a.id}&album_id=${param.album_id}">
+                            <strong>${a.nome}</strong>
+                        </a>
+                    </c:if>
+                    <c:if test="${empty param.album_id}">
+                        <a class="btn btn-primary m-1" href="${param.redirectPage}?artist_id=${a.id}">
+                            <strong>${a.nome}</strong>
+                        </a>
+                    </c:if>
                 </c:if>
             </c:forEach>
             <c:if test="${empty artistas}">

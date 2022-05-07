@@ -7,7 +7,6 @@ package controllers;
 
 import beans.Album;
 import beans.Artist;
-import beans.Genero;
 import beans.Link;
 import beans.Music;
 import connection.ConnectionFactory;
@@ -53,18 +52,17 @@ public class MusicController extends HttpServlet {
         if("store".equals(action)){
             Link links = null;
             
-            String nome = request.getParameter("nome");
+            String title = request.getParameter("nome");
             String artista = request.getParameter("artista");
-            String duracao = request.getParameter("duracao");
-            String letra = request.getParameter("letra");
-            String generos = request.getParameter("genero");
+            String duration = request.getParameter("duracao");
+            String lyrics = request.getParameter("letra");
+            String Generos = request.getParameter("genero");
             String linkSpotify = request.getParameter("link_spotify");
             String linkDeezer = request.getParameter("link_deezer");
             String linkApple = request.getParameter("link_apple");
-            String album_id = request.getParameter("album_id");
+            String album_id = request.getParameter("album");
             
          
-            Genero genero = new Genero(0,"rock");
             if (linkSpotify == null){
                 List<String> list = new ArrayList<>();
                 list.add(linkApple);
@@ -93,7 +91,7 @@ public class MusicController extends HttpServlet {
                 links = new Link(linkSpotify, linkDeezer, linkApple);
             }
             
-            String artist_id = request.getParameter("artist_id");
+            String artist_id = request.getParameter("artist");
             
             System.out.println(artist_id);
             
@@ -103,19 +101,19 @@ public class MusicController extends HttpServlet {
                 MusicDAO mDAO = new MusicDAO(conn.getConnection());
                 AlbumDAO albDAO = new AlbumDAO(conn.getConnection());
                 
-                Artist a = artDAO.find(Integer.parseInt(artist_id));
+                Artist artist = artDAO.find(Integer.parseInt(artist_id));
                 
                 Album album = null;
                 
                 if(album_id == null){
-                    album = new Album(nome,2022);
+                    album = new Album(title,2022);
                     
                     albDAO.insert(album);
                 } else {
                     album = albDAO.find(Integer.parseInt(album_id));
                 }
                 
-                Music m = new Music(letra, duracao, letra, album, generos, genero, a, links, 0);
+                Music m = new Music(title, duration, lyrics, album, Generos, artist, links, 0);
                 mDAO.insert(m);
                     
                 request.setAttribute("musica", m);
