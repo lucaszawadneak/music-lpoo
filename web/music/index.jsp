@@ -51,10 +51,16 @@
 
             <c:forEach var="m" items="${musicas}">
                 <div class="card my-3">
-                    <strong class="card-header">${m.title} (${m.ano})</strong>
+                    <strong class="card-header">${m.title}</strong>
                     <div class="card-body">
-                        <p>Duração: ${m.duracao}</p>
-                        <a href="/music/index.jsp?id=${m.id}" class="card-link">Ir para música</a>
+                        <p>Duração: ${m.duration}</p>
+                        <p>Artista: ${m.artist.name}</p>
+                        <p>Letra: ${m.lyrics}</p>
+                        <p>Generos: ${m.generos}</p>
+                        <p>Links: ${m.links}</p>
+                        <p>Visualizações: ${m.visualizacoes}</p>
+                        <a href="/music-lpoo/album/AlbumController?id=${m.album.id}" class="card-link">Ir para Album</a>
+                        <a href="/music-lpoo/artist/ArtistController?id=${m.arist.id}" class="card-link">Ir para Artista</a>
                     </div>
                 </div>
             </c:forEach>
