@@ -4,8 +4,6 @@
  */
 package beans;
 
-import java.io.Serializable;
-
 /**
  *
  * @authors Gustavo Schwanka GRR20193748
@@ -13,15 +11,13 @@ import java.io.Serializable;
             Lucas Cassilha Zawadneak GRR20200141
             Ludimilla Krautzuk GRR20204467
  */
-
-public class Music implements Serializable{
+public class Music {
     private int id;
     private String title;
     private String duration;
     private String lyrics;
     private Album album;
-    private String idGenre;
-    private Genero genero;
+    private String Generos;
     private Artist artista;
     private Link links;
     private int visualizacoes;
@@ -29,26 +25,24 @@ public class Music implements Serializable{
     public Music() {
     }
 
-    public Music(int id, String title, String duration, String lyrics, Album album, String idGenre, Genero genero, Artist artista, Link links, int visualizacoes) {
-        this.id = id;
+    public Music(String title, String duration, String lyrics, Album album, String Generos, Artist artista, Link links, int visualizacoes) {
         this.title = title;
         this.duration = duration;
         this.lyrics = lyrics;
         this.album = album;
-        this.idGenre = idGenre;
-        this.genero = genero;
+        this.Generos = Generos;
         this.artista = artista;
         this.links = links;
         this.visualizacoes = visualizacoes;
     }
 
-    public Music(String title, String duration, String lyrics, Album album, String idGenre, Genero genero, Artist artista, Link links, int visualizacoes) {
+    public Music(int id, String title, String duration, String lyrics, Album album, String Generos, Artist artista, Link links, int visualizacoes) {
+        this.id = id;
         this.title = title;
         this.duration = duration;
         this.lyrics = lyrics;
         this.album = album;
-        this.idGenre = idGenre;
-        this.genero = genero;
+        this.Generos = Generos;
         this.artista = artista;
         this.links = links;
         this.visualizacoes = visualizacoes;
@@ -94,21 +88,14 @@ public class Music implements Serializable{
         this.album = album;
     }
 
-    public String getIdGenre() {
-        return idGenre;
+    public String getGeneros() {
+        return Generos;
     }
 
-    public void setIdGenre(String idGenre) {
-        this.idGenre = idGenre;
+    public void setGeneros(String Generos) {
+        this.Generos = Generos;
     }
 
-    public Genero getGenero() {
-        return genero;
-    }
-
-    public void setGenero(Genero genero) {
-        this.genero = genero;
-    }
 
     public Artist getArtista() {
         return artista;
