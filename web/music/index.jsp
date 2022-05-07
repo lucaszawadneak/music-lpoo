@@ -17,11 +17,11 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
     </head>
     <body id="page-top" style="background-color:#0A0708" class="container">
-        <c:if test="${empty musica}">
+        <c:if test="${empty musica.id}">
             <c:redirect url="/index.jsp" />
         </c:if>
         <div class="mt-lg-5">
-            <h2>${musica.nome}</h2>
+            <h2>${musica.title}</h2>
             <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
                 <div class="container">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">

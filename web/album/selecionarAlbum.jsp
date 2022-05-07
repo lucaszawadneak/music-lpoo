@@ -28,10 +28,15 @@
                 <c:if test="${not empty param.redirectPage}">
                     <input type="hidden" name="redirectPage" value="${param.redirectPage}"/>
                 </c:if>
+                <c:if test="${not empty param.artist_id}">
+                    <input type="hidden" name="artist_id" value="${param.artist_id}"/>
+                </c:if>
                 <input type="text" class="form-control"name="searchParam" value="${param.searchParam}" minlength="3">
                 <input type="hidden" name="action" value="search"/>
               </div>
         </form>
+                
+                <p>${param.artist_id}</p>
         
         <div class="card p-3">
             <c:forEach var="a" items="${albuns}">
@@ -40,11 +45,16 @@
                         <strong>${a.nome}</strong>
                     </a>
                 </c:if>
-                <c:if test="${not empty param.redirectPage}">
+                <c:if test="${not empty param.artist_id}">
+                        <a class="btn btn-primary m-1" href="${param.redirectPage}?album_id=${a.id}&artist_id=${param.artist_id}">
+                            <strong>${a.nome}</strong>
+                        </a>
+                    </c:if>
+                <c:if test="${empty param.artist_id}">
                     <a class="btn btn-primary m-1" href="${param.redirectPage}?album_id=${a.id}">
                         <strong>${a.nome}</strong>
                     </a>
-                </c:if>
+                    </c:if>
             </c:forEach>
             <c:if test="${empty albuns}">
                 <strong>Nenhum album encontrado</strong>

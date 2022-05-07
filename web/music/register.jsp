@@ -28,32 +28,24 @@
             <div class="mt-lg-5">
                 <c:if test="${!empty album}">${album}</c:if>
                 <h2 style="color: #ffc800">Cadastrar música</h2>
+                <a class="btn btn-primary mb-2" href="/music-lpoo/artist/selecionarArtista.jsp?album_id=${param.album_id}&redirectPage=/music-lpoo/music/register.jsp">Selecionar artista</a>
+                <a class="btn btn-primary mb-2" href="/music-lpoo/album/selecionarAlbum.jsp?artist_id=${param.artist_id}&redirectPage=/music-lpoo/music/register.jsp">Selecionar álbum</a>
                 <form id="music" name="music" action="../MusicController" method="POST">
                     <input name="action" value="store" type="hidden"/>
                     <input class="form-control mb-2" placeholder="Nome" maxlength="50" name="nome" required/>
-                    <input class="form-control mb-2" placeholder="Artista" maxlength="50" required/>
+                    <input class="form-control mb-2" placeholder="Artista" name="artist" readonly maxlength="50" required value="${param.artist_id}"/>
                     <input class="form-control mb-2" placeholder="Duração" maxlength="50" name="duracao" required/>
                     <textarea class="form-control mb-2" placeholder="Letra" maxlength="1000" name="letra" required></textarea>
                     <input class="form-control mb-2" placeholder="Link Spotify" maxlength="50" name="link_spotify" required/>
                     <input class="form-control mb-2" placeholder="Link Deezer" maxlength="50" name="link_deezer" required/>
                     <input class="form-control mb-2" placeholder="Link Apple Music" maxlength="50" name="link_apple" required/>
-                    <select style="width:100%;" id="select" class="mb-2" for="music"  name="generos[]" multiple="multiple"  required>
-                        <option value="1">Pop</option>
-                        <option value="2">Hip-Hop/Rap</option>
-                        <option value="3">Rock</option>
-                        <option value="4">Dance/Electronic Music</option>
-                        <option value="5">Latin Music</option>
-                        <option value="6">Indie/Alt Rock</option>
-                        <option value="7">Classical Music</option>
-                        <option value="8">K-pop</option>
-                        <option value="9">Country</option>
-                        <option value="10">Metal</option>
-                    </select>
+                    <input class="form-control mb-2" placeholder="Genero" maxlength="50" name="genero" required/>
                     <label for="album">Album</label>
-                    <input class="form-control mb-2 album" <c:choose><c:when test="${!empty album}">placeholder="${album.nome}-${album.ano}"</c:when> <c:otherwise> placeholder="Single"</c:otherwise> </c:choose>maxlength="50" <c:if test="${!empty album}">value="${album}"</c:if>  readonly name="album" required/>
+                    <input class="form-control mb-2 album" value="${param.album_id}" readonly name="album" required/>
+                
+                    <button type="submit" class="btn btn-warning">Cadastrar</button>
+                    <a href="/index.jsp"  class="btn btn-secondary">Cancelar</a>
                 </form>
-                <button type="submit" class="btn btn-warning">Cadastrar</button>
-                <button type="submit" class="btn btn-secondary">Cancelar</button>
             </div>
         </div>
         <script>

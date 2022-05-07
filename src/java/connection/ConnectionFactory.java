@@ -28,7 +28,7 @@ public class ConnectionFactory implements AutoCloseable {
             + "id SERIAL PRIMARY KEY NOT NULL,"
             + "titulo varchar(50) NOT NULL,"
             + "duracao varchar(50) NOT NULL,"
-            + "idGenero varchar(50) NOT NULL,"
+            + "generos varchar(50) NOT NULL,"
             + "letra text NOT NULL,"
             + "visualizacoes int NOT NULL,"
             + "idAlbum int NOT NULL,"
@@ -46,9 +46,6 @@ public class ConnectionFactory implements AutoCloseable {
             + "nome varchar(50) NOT NULL UNIQUE,"
             + "ano INTEGER NOT NULL,"
             + "visualizacoes INTEGER NOT NULL);";  
-    private static final String CREATE_GENERO = "CREATE TABLE IF NOT EXISTS genero("
-            + "id SERIAL PRIMARY KEY NOT NULL,"
-            + "nome varchar(50) NOT NULL);";
     private Connection con = null;
     
     public Connection getConnection() throws Exception{
@@ -61,8 +58,6 @@ public class ConnectionFactory implements AutoCloseable {
                 create_artist = con.prepareStatement(CREATE_MUSIC);
                 create_artist.executeUpdate();
                 create_artist = con.prepareStatement(CREATE_ALBUM);
-                create_artist.executeUpdate();
-                create_artist = con.prepareStatement(CREATE_GENERO);
                 create_artist.executeUpdate();
                 create_artist = con.prepareStatement(CREATE_ARTIST_MUSIC);
                 create_artist.executeUpdate();
