@@ -39,9 +39,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#portfolio">Ranking de M�sicas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#portfolio">Ranking de Músicas</a></li>
                         <li class="nav-item"><a class="nav-link" href="#ranking">Ranking de Album</a></li>
-                        <li class="nav-item"><a class="nav-link" href="music/register.jsp">Cadastrar M�sica</a></li>
+                        <li class="nav-item"><a class="nav-link" href="music/register.jsp">Cadastrar Música</a></li>
                         <li class="nav-item"><a class="nav-link" href="album/register.jsp">Cadastrar Album</a></li>
                         <li class="nav-item"><a class="nav-link" href="artist/register.jsp">Cadastrar Artista</a></li>
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/RecordController?action=search&searchParam=">Mostrar Albuns</a></li>
@@ -53,10 +53,10 @@
         <!-- Masthead-->
         <header class="masthead">
             <div class="container">
-                <div class="masthead-subheading">Voc� gosta de m�sica? Voc� quer ser ouvido por v�rias pessoas?</div>
-                <div class="masthead-heading text-uppercase">Registre sua m�sica</div>
+                <div class="masthead-subheading">Você gosta de música? Você quer ser ouvido por várias pessoas?</div>
+                <div class="masthead-heading text-uppercase">Registre sua música</div>
                 <a class="btn btn-primary btn-xl text-uppercase" href="#services">Registrar Album</a>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Registrar M�sica single</a>
+                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Registrar Música single</a>
                 <a class="btn btn-primary btn-xl text-uppercase" href="#services">Registrar Artista</a>
             </div>
         </header>
@@ -65,8 +65,8 @@
         <section class="page-section bg-light" id="portfolio">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">M�sicas</h2>
-                    <h3 class="section-subheading text-muted">M�sicas mais ouvidas</h3>
+                    <h2 class="section-heading text-uppercase">Músicas</h2>
+                    <h3 class="section-subheading text-muted">Músicas mais ouvidas</h3>
                 </div>
                 <div class="row">
                     <c:forEach var = "i" begin = "1" end = "6">

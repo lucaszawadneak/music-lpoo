@@ -47,10 +47,10 @@ public class MusicDAO implements DAO<Music> {
             PreparedStatement ps = this.con.prepareStatement(INSERT);
             ps.setString(1,m.getTitle());
             ps.setString(2,m.getDuration());
-            ps.setString(3,m.getGenero().getId());
-            ps.setString(4,m.getLyrics());
-            ps.setString(5,m.getVisualizacoes());
-            ps.setString(6,m.getAlbum().getId());
+//            ps.setString(3,m.getGenero().getId());
+//            ps.setString(4,m.getLyrics());
+//            ps.setString(5,m.getVisualizacoes());
+//            ps.setString(6,m.getAlbum().getId());
 //            ps.setString(7,m.getLinks().getLinkSpotify());
 //            ps.setString(8,m.getLinks().getLinkDeezer());
 //            ps.setString(9,m.getLinks().getLinkAppleMusic());
