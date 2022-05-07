@@ -27,18 +27,22 @@
                 </div>
                 <input type="text" class="form-control"name="searchParam" value="${param.searchParam}" minlength="3">
                 <input type="hidden" name="action" value="search"/>
+                <c:if test="${not empty param.redirectPage}">
+                    <input type="hidden" name="redirectPage" value="${param.redirectPage}"/>
+                </c:if>
+                <input type="hidden" name="action" value="search"/>
               </div>
         </form>
         
         <div class="card p-3">
             <c:forEach var="a" items="${artistas}">
-                <c:if test="${empty redirectPage}">
+                <c:if test="${empty param.redirectPage}">
                     <a class="btn btn-primary m-1" href="ArtistController?id=${a.id}">
                         <strong>${a.nome}</strong>
                     </a>
                 </c:if>
-                <c:if test="${not empty redirectPage}">
-                    <a class="btn btn-primary m-1" href="${redirectPage}?artist_id=${a.id}">
+                <c:if test="${not empty param.redirectPage}">
+                    <a class="btn btn-primary m-1" href="${param.redirectPage}?artist_id=${a.id}">
                         <strong>${a.nome}</strong>
                     </a>
                 </c:if>

@@ -4,8 +4,11 @@
  */
 package dao;
 
+import beans.Album;
 import beans.Artist;
 import beans.Music;
+import beans.Link;
+import beans.Genero;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,8 +23,9 @@ import java.util.List;
             Ludimilla Krautzuk GRR20204467
  */
 public class MusicDAO implements DAO<Music> {
-    private static final String INSERT = "";
+    private static final String INSERT = "INSERT INTO musica (titulo,duracao,idgenero,letra,visualizaoes,idalbum,spotify,deezer,applemusic) VALUES (?,?,?,?,?,?,?,?,?)";
     private static final String FIND_ONE = "";
+    private static final String SEARCH = "SELECT * FROM music WHERE titulo LIKE ?";
     
     private Connection con = null;
     
@@ -38,8 +42,23 @@ public class MusicDAO implements DAO<Music> {
     }
 
     @Override
-    public void insert(Music t) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void insert(Music m) throws Exception {
+        try{
+            PreparedStatement ps = this.con.prepareStatement(INSERT);
+            ps.setString(1,m.getTitle());
+            ps.setString(2,m.getDuration());
+            ps.setString(3,m.getGenero().getId());
+            ps.setString(4,m.getLyrics());
+            ps.setString(5,m.getVisualizacoes());
+            ps.setString(6,m.getAlbum().getId());
+//            ps.setString(7,m.getLinks().getLinkSpotify());
+//            ps.setString(8,m.getLinks().getLinkDeezer());
+//            ps.setString(9,m.getLinks().getLinkAppleMusic());
+            
+            ps.executeUpdate();
+        } catch (Exception e){
+            throw e;
+        }
     }
     
     
@@ -68,10 +87,14 @@ public class MusicDAO implements DAO<Music> {
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 Music m = new Music();
-//                a.setId(Integer.parseInt(rs.getString("id")));
-//                a.setNome(rs.getString("nome"));
-//                a.setPais(rs.getString("pais"));
-//                a.setDescricao(rs.getString("descricao"));
+                m.setId(rs.getInt("id"));
+                m.setTitle(rs.getString("titulo"));
+                m.setArtista((Artist)rs.getObject("artist"));
+                m.setDuration(rs.getString("duration"));
+                m.setLyrics(rs.getString("lyrics"));
+                m.setLinks((Link)rs.getObject("link"));
+                m.setGenero((Genero)rs.getObject("genero"));
+                m.setAlbum((Album)rs.getObject("album"));
                 list.add(m);
             }
             return list;
@@ -93,6 +116,24 @@ public class MusicDAO implements DAO<Music> {
                 return total;
             }
             return 0;
+        } catch (Exception e){
+            System.out.println(e);
+            throw e;
+        }
+    }
+    
+    public ArrayList<Music> search(String search) throws Exception {
+        ArrayList<Music> musicas = new ArrayList<>();
+        try{
+            PreparedStatement ps = this.con.prepareStatement(SEARCH);
+            ps.setString(1,"%" + search + "%");
+            
+            
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                
+            }
+            return musicas;
         } catch (Exception e){
             System.out.println(e);
             throw e;
