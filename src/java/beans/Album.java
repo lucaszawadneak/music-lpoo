@@ -16,10 +16,22 @@ import java.io.Serializable;
             Lucas Cassilha Zawadneak GRR20200141
             Ludimilla Krautzuk GRR20204467
  */
-public class Album implements Serializable {  
+public class Album implements Serializable {
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     private String nome;   
     private int ano;
     
+    public Album(){
+        
+    }
     public Album(String nomePassado,int anoPassado){
         this.nome = nomePassado;
         this.ano = anoPassado;

@@ -4,6 +4,8 @@
  */
 package beans;
 
+import java.io.Serializable;
+
 /**
  *
  * @authors Gustavo Schwanka GRR20193748
@@ -11,8 +13,12 @@ package beans;
             Lucas Cassilha Zawadneak GRR20200141
             Ludimilla Krautzuk GRR20204467
  */
+<<<<<<< HEAD
 public class Music {
     private int id;
+=======
+public class Music implements Serializable{
+>>>>>>> 2ddabc14bec9c321f35d7e3eb894c7579be8df4c
     private String title;
     private String duration;
     private String lyrics;
