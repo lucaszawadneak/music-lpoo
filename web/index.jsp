@@ -55,9 +55,9 @@
             <div class="container">
                 <div class="masthead-subheading">Você gosta de música? Você quer ser ouvido por várias pessoas?</div>
                 <div class="masthead-heading text-uppercase">Registre sua música</div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Registrar Album</a>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Registrar Música single</a>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Registrar Artista</a>
+                <a class="btn btn-primary btn-xl text-uppercase" href="album/register.jsp">Registrar Album</a>
+                <a class="btn btn-primary btn-xl text-uppercase" href="music/register.jsp">Registrar Música single</a>
+                <a class="btn btn-primary btn-xl text-uppercase" href="artist/register.jsp">Registrar Artista</a>
             </div>
         </header>
 
@@ -86,80 +86,6 @@
                             </div>
                         </div>
                     </c:forEach>
-                    <!--                    <div class="col-lg-4 col-sm-6 mb-4">
-                                             Portfolio item 2
-                                            <div class="portfolio-item">
-                                                <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
-                                                    <div class="portfolio-hover">
-                                                        <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                                    </div>
-                                                    <img class="img-fluid" src="assets/img/portfolio/2.2.jpg" alt="..." />
-                                                </a>
-                                                <div class="portfolio-caption">
-                                                    <div class="portfolio-caption-heading">Explore</div>
-                                                    <div class="portfolio-caption-subheading text-muted">Graphic Design</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-6 mb-4">
-                                             Portfolio item 3
-                                            <div class="portfolio-item">
-                                                <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
-                                                    <div class="portfolio-hover">
-                                                        <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                                    </div>
-                                                    <img class="img-fluid" src="assets/img/portfolio/3.3.jpg" alt="..." />
-                                                </a>
-                                                <div class="portfolio-caption">
-                                                    <div class="portfolio-caption-heading">Finish</div>
-                                                    <div class="portfolio-caption-subheading text-muted">Identity</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
-                                             Portfolio item 4
-                                            <div class="portfolio-item">
-                                                <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
-                                                    <div class="portfolio-hover">
-                                                        <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                                    </div>
-                                                    <img class="img-fluid" src="assets/img/portfolio/4.4.jpg" alt="..." />
-                                                </a>
-                                                <div class="portfolio-caption">
-                                                    <div class="portfolio-caption-heading">Lines</div>
-                                                    <div class="portfolio-caption-subheading text-muted">Branding</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
-                                             Portfolio item 5
-                                            <div class="portfolio-item">
-                                                <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">
-                                                    <div class="portfolio-hover">
-                                                        <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                                    </div>
-                                                    <img class="img-fluid" src="assets/img/portfolio/5.5.jpg" alt="..." />
-                                                </a>
-                                                <div class="portfolio-caption">
-                                                    <div class="portfolio-caption-heading">Southwest</div>
-                                                    <div class="portfolio-caption-subheading text-muted">Website Design</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-6">
-                                             Portfolio item 6
-                                            <div class="portfolio-item">
-                                                <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">
-                                                    <div class="portfolio-hover">
-                                                        <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                                    </div>
-                                                    <img class="img-fluid" src="assets/img/portfolio/6.6.jpg" alt="..." />
-                                                </a>
-                                                <div class="portfolio-caption">
-                                                    <div class="portfolio-caption-heading">Window</div>
-                                                    <div class="portfolio-caption-subheading text-muted">Photography</div>
-                                                </div>
-                                            </div>-->
                 </div>
             </div>
         </div>
@@ -191,82 +117,6 @@
                     </div>
                 </c:forEach>
             </div>
-
-            <!--                    <div class="col-lg-4 col-sm-6 mb-4">
-                                     Portfolio item 2
-                                    <div class="ranking-item">
-                                        <a class="ranking-link" data-bs-toggle="modal" href="#rankingModal2">
-                                            <div class="ranking-hover">
-                                                <div class="ranking-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                            </div>
-                                            <img class="img-fluid" src="assets/img/portfolio1/2.0.jpg" alt="..." />
-                                        </a>
-                                        <div class="ranking-caption">
-                                            <div class="ranking-caption-heading">Explore</div>
-                                            <div class="ranking-caption-subheading text-muted">Graphic Design</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-sm-6 mb-4">
-                                     Portfolio item 3
-                                    <div class="ranking-item">
-                                        <a class="ranking-link" data-bs-toggle="modal" href="#rankingModal3">
-                                            <div class="ranking-hover">
-                                                <div class="ranking-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                            </div>
-                                            <img class="img-fluid" src="assets/img/portfolio1/3.0.jpg" alt="..." />
-                                        </a>
-                                        <div class="ranking-caption">
-                                            <div class="ranking-caption-heading">Finish</div>
-                                            <div class="ranking-caption-subheading text-muted">Identity</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
-                                     Portfolio item 4
-                                    <div class="ranking-item">
-                                        <a class="ranking-link" data-bs-toggle="modal" href="#rankingModal4">
-                                            <div class="ranking-hover">
-                                                <div class="ranking-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                            </div>
-                                            <img class="img-fluid" src="assets/img/portfolio1/4.0.jpg" alt="..." />
-                                        </a>
-                                        <div class="ranking-caption">
-                                            <div class="ranking-caption-heading">Lines</div>
-                                            <div class="ranking-caption-subheading text-muted">Branding</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
-                                     Portfolio item 5
-                                    <div class="ranking-item">
-                                        <a class="ranking-link" data-bs-toggle="modal" href="#rankingModal5">
-                                            <div class="ranking-hover">
-                                                <div class="ranking-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                            </div>
-                                            <img class="img-fluid" src="assets/img/portfolio1/5.0.jpg" alt="..." />
-                                        </a>
-                                        <div class="ranking-caption">
-                                            <div class="ranking-caption-heading">Southwest</div>
-                                            <div class="ranking-caption-subheading text-muted">Website Design</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-sm-6">
-                                     Portfolio item 6
-                                    <div class="ranking-item">
-                                        <a class="ranking-link" data-bs-toggle="modal" href="#rankingModal6">
-                                            <div class="ranking-hover">
-                                                <div class="ranking-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                            </div>
-                                            <img class="img-fluid" src="assets/img/portfolio1/6.0.jpg" alt="..." />
-                                        </a>
-                                        <div class="ranking-caption">
-                                            <div class="ranking-caption-heading">Window</div>
-                                            <div class="ranking-caption-subheading text-muted">Photography</div>
-                                        </div>'
-                                    </div>
-                                </div>-->
         </div>
     </div>
 </section>
@@ -337,10 +187,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-<!-- * *                               SB Forms JS                               * *-->
-<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 </html>

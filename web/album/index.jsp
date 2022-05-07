@@ -32,7 +32,7 @@
             </c:if>
             
             <nav class="navbar navbar-light bg-light px-5" style="border-radius:5px">
-                <a class="btn btn-light" href="../MusicController?idAlbum=${album.id}">Adicionar nova música</a>
+                <a class="btn btn-light" href="./music/register.jsp?id=${album.id}">Adicionar nova música</a>
                 <a class="btn btn-light" href="./album/register.jsp">Cadastrar novo álbum</a>
                 <a class="btn btn-light" href="./index.jsp">Voltar para página inicial</a>
             </nav>
