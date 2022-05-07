@@ -71,6 +71,7 @@ dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml
+web/WEB-INF/
 
 ##############################
 ## Visual Studio Code
@@ -82,3 +83,4 @@ nb-configuration.xml
 ## OS X
 ##############################
 .DS_Store
+
