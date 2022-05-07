@@ -30,6 +30,8 @@
             <c:if test="${not empty musicCount}">    
                 <p>${musicCount} músicas</p>
             </c:if>
+                
+            <p>${artista.descricao}</p>
             
             <nav class="navbar navbar-light bg-light px-5" style="border-radius:5px">
                 <a class="btn btn-light" href="./music/register.jsp">Cadastrar nova música</a>
