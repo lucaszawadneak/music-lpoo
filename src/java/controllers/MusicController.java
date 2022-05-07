@@ -124,27 +124,9 @@ public class MusicController extends HttpServlet {
                 System.out.println("Erro ao criar musica");
             }
             
-        } else if("search".equals(action)){
-            request.setAttribute("musicas", new ArrayList<>());
-            String searchParam = request.getParameter("searchParam");
-
-            try{
-                MusicDAO m = new MusicDAO(conn.getConnection());
-
-                ArrayList<Music> artistas = m.search(searchParam);
-
-                request.setAttribute("artistas", artistas);
-
-                RequestDispatcher search = request.getRequestDispatcher("/artist/selecionarArtista.jsp");
-                search.forward(request, response);
-            
-            } catch (Exception e){
-                System.out.println(e);
-                e.printStackTrace();
-            }
-                    
         } else {
             String musicID = request.getParameter("id");
+            System.out.println(musicID);
             
             if(musicID == null) {
                 response.sendRedirect("./index.jsp");
