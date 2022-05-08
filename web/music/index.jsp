@@ -16,12 +16,22 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
     </head>
+<<<<<<< HEAD
     <body id="page-top"  class="container">
         <c:if test="${empty musica.id}">
             <c:redirect url="/index.jsp" />
         </c:if>
         <div class="mt-lg-5">
             <nav class="navbar navbar-expand-lg">
+=======
+    <body id="page-top" style="background-color:#0A0708" class="container">
+        <c:if test="${empty musica}">
+            <c:redirect url="/index.jsp" />
+        </c:if>
+        <div class="mt-lg-5">
+            <h2>${musica.nome}</h2>
+            <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+>>>>>>> 4590848cadcfc236a9ce97474313af5571845153
                 <div class="container">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                         Menu
@@ -37,6 +47,7 @@
                 </div>
             </nav>
 
+<<<<<<< HEAD
             <div class="card my-3 mt-5">
                     <strong class="card-header">${musica.title}</strong>
                     <div class="card-body">
@@ -46,6 +57,20 @@
                         <p>Links: ${musica.links}</p>
                         <p>Visualizações: ${musica.visualizacoes}</p>
                         <a href="/music-lpoo/AlbumController?id=${musica.album.id}" class="card-link">Ir para Album</a>
+=======
+            <c:forEach var="m" items="${musicas}" varStatus="count">
+                <div class="card my-3">
+                    <strong class="card-header">${m.title}</strong>
+                    <div class="card-body">
+                        <p>Duração: ${m.duration}</p>
+                        <p>Artista: ${m.artist.name}</p>
+                        <p>Letra: ${m.lyrics}</p>
+                        <p>Generos: ${m.generos}</p>
+                        <p>Links: ${m.links.linkSpotify}/${m.links.linkDeezer}/${m.links.linkAppleMusic}</p>
+                        <p>Visualizações: ${m.visualizacoes}</p>
+                        <a href="/music-lpoo/album/AlbumController?id=${m.album.id}" class="card-link">Ir para Album</a>
+                        <a href="/music-lpoo/artist/ArtistController?id=${m.arist.id}" class="card-link">Ir para Artista</a>
+>>>>>>> 4590848cadcfc236a9ce97474313af5571845153
                     </div>
                 </div>
             <strong>Artistas</strong>
