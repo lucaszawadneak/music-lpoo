@@ -16,13 +16,12 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
     </head>
-    <body id="page-top" style="background-color:#0A0708" class="container">
+    <body id="page-top"  class="container">
         <c:if test="${empty musica.id}">
             <c:redirect url="/index.jsp" />
         </c:if>
         <div class="mt-lg-5">
-            <h2>${musica.title}</h2>
-            <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <nav class="navbar navbar-expand-lg">
                 <div class="container">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                         Menu
@@ -37,47 +36,23 @@
                     </div>
                 </div>
             </nav>
-            <p>${musicCount} músicas</p>
-            <form action="MusicController" method="GET">
-                <div class="input-group mb-3 mt-3">
-                    <div class="input-group-prepend">
-                        <button class="btn btn-outline-secondary" type="submit">Pesquisar</button>
-                    </div>
-                    <input type="text" class="form-control"name="searchParam" value="${param.searchParam}">
-                    <input type="hidden" name="id" value="${musica.id}">
-                    <input type="hidden" name="page" value="0">
-                </div>
-            </form>
 
-            <c:forEach var="m" items="${musicas}">
-                <div class="card my-3">
-                    <strong class="card-header">${m.title}</strong>
+            <div class="card my-3 mt-5">
+                    <strong class="card-header">${musica.title}</strong>
                     <div class="card-body">
-                        <p>Duração: ${m.duration}</p>
-                        <p>Artista: ${m.artist.name}</p>
-                        <p>Letra: ${m.lyrics}</p>
-                        <p>Generos: ${m.generos}</p>
-                        <p>Links: ${m.links}</p>
-                        <p>Visualizações: ${m.visualizacoes}</p>
-                        <a href="/music-lpoo/album/AlbumController?id=${m.album.id}" class="card-link">Ir para Album</a>
-                        <a href="/music-lpoo/artist/ArtistController?id=${m.arist.id}" class="card-link">Ir para Artista</a>
+                        <p>Duração: ${musica.duration}</p>
+                        <p>Letra: ${musica.lyrics}</p>
+                        <p>Generos: ${musica.generos}</p>
+                        <p>Links: ${musica.links}</p>
+                        <p>Visualizações: ${musica.visualizacoes}</p>
+                        <a href="/music-lpoo/AlbumController?id=${musica.album.id}" class="card-link">Ir para Album</a>
                     </div>
                 </div>
+            <strong>Artistas</strong>
+            <c:forEach var="a" items="${artistas}">
+                <br></br>
+                <a href="/music-lpoo/ArtistController?id=${a.id}" >${a.nome}</a>
             </c:forEach>
-            
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="MusicController?id=${Musica.id}&page=1&searchParam=${param.searchParam}">1</a></li>
-                    <li class="page-item"><a class="page-link" href="MusicController?id=${Musica.id}&page=2&searchParam=${param.searchParam}">2</a></li>
-                    <li class="page-item"><a class="page-link" href="MusicController?id=${Musica.id}&page=3&searchParam=${param.searchParam}">3</a></li>
-                    <li class="page-item"><a class="page-link" href="MusicController?id=${Musica.id}&page=4&searchParam=${param.searchParam}">4</a></li>
-                    <li class="page-item"><a class="page-link" href="MusicController?id=${Musica.id}&page=5&searchParam=${param.searchParam}">5</a></li>
-                    <li class="page-item"><a class="page-link" href="MusicController?id=${Musica.id}&page=6&searchParam=${param.searchParam}">6</a></li>
-                    <li class="page-item"><a class="page-link" href="MusicController?id=${Musica.id}&page=7&searchParam=${param.searchParam}">7</a></li>
-                    <li class="page-item"><a class="page-link" href="MusicController?id=${Musica.id}&page=8&searchParam=${param.searchParam}">8</a></li>
-                    <li class="page-item"><a class="page-link" href="MusicController?id=${Musica.id}&page=9&searchParam=${param.searchParam}">9</a></li>
-                </ul>
-            </nav>
         </div>
     </body>
 </html>

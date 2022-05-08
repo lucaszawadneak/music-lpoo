@@ -93,7 +93,7 @@ public class ArtistController extends HttpServlet {
             String page = request.getParameter("page");
             String searchParam = request.getParameter("searchParam");
 
-            System.out.println(searchParam);
+            System.out.println(artistID);
             if (artistID == null) {
                 response.sendRedirect("./index.jsp");
             }

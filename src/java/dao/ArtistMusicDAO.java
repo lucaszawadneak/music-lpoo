@@ -53,10 +53,11 @@ public class ArtistMusicDAO {
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 Artist a = new Artist();
-                a.setId(Integer.parseInt(rs.getString("id")));
+                a.setId(rs.getInt("id"));
                 a.setNome(rs.getString("nome"));
                 a.setPais(rs.getString("pais"));
                 a.setDescricao(rs.getString("descricao"));
+                System.out.print(rs.getInt("id"));
                 list.add(a);
             }
             return list;

@@ -141,10 +141,11 @@ public class MusicController extends HttpServlet {
                 ArtistMusicDAO amDAO = new ArtistMusicDAO(conn.getConnection());
                 Music m = mDAO.find(Integer.parseInt(musicID));
                 
-                ArrayList<Artist> artistas = amDAO.findMusicAuthors(m.getId());
+                ArrayList<Artist> artistas = amDAO.findMusicAuthors(Integer.parseInt(musicID));
                 
                 request.setAttribute("musica", m);
                 request.setAttribute("artistas", artistas);
+                System.out.println(artistas);
 
                 rd.forward(request, response);
             } catch (Exception e){

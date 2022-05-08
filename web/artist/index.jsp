@@ -52,6 +52,7 @@
             <c:if test="${empty musicList}">
                 <strong>Nenhuma música encontrada
             </c:if>
+                    
             <c:forEach var="m" items="${musicList}">
                 <div class="card my-3">
                     <strong class="card-header">${m.title}</strong>
