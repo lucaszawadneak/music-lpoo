@@ -46,22 +46,6 @@ public class RecordController extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher("/album/index.jsp");
         String action = request.getParameter("action");
         ConnectionFactory conn = new ConnectionFactory();
-        if("storeMusic".equals(action)){
-            try {
-                int id = 0;
-                id = Integer.parseInt(request.getParameter("id"));
-                Album a = new Album();
-                AlbumDAO aDAO = new AlbumDAO(conn.getConnection());
-                a = aDAO.find(id);
-                request.setAttribute("album", a);
-                RequestDispatcher selecionar = request.getRequestDispatcher("/music/register.jsp");
-                selecionar.forward(request, response);
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("Erro ao buscar artista");
-            }
-            
-        }
         if ("store".equals(action)){
             try {
                 Album al = new Album(request.getParameter("nome"),Integer.parseInt(request.getParameter("ano")));

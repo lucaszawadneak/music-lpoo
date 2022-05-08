@@ -49,22 +49,6 @@ public class ArtistController extends HttpServlet {
 
         String action = request.getParameter("action");
         ConnectionFactory conn = new ConnectionFactory();
-        if("storeMusic".equals(action)){
-            try {
-                int id = 0;
-                id = Integer.parseInt(request.getParameter("id"));
-                Artist a = new Artist();
-                ArtistDAO aDAO = new ArtistDAO(conn.getConnection());
-                a = aDAO.find(id);
-                request.setAttribute("artista", a);
-                RequestDispatcher selecionar = request.getRequestDispatcher("/music/register.jsp");
-                selecionar.forward(request, response);
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("Erro ao buscar artista");
-            }
-            
-        }
         if ("store".equals(action)) {
             String nome = request.getParameter("nome");
             String pais = request.getParameter("pais");
