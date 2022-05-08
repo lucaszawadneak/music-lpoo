@@ -41,9 +41,6 @@
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#portfolio">Ranking de Músicas</a></li>
                         <li class="nav-item"><a class="nav-link" href="#ranking">Ranking de Album</a></li>
-                        <li class="nav-item"><a class="nav-link" href="music/register.jsp">Cadastrar Música</a></li>
-                        <li class="nav-item"><a class="nav-link" href="album/register.jsp">Cadastrar Album</a></li>
-                        <li class="nav-item"><a class="nav-link" href="artist/register.jsp">Cadastrar Artista</a></li>
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/RecordController?action=search&searchParam=">Mostrar Albuns</a></li>
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/ArtistController?action=search&searchParam=">Mostrar Artistas</a></li>
                     </ul>
