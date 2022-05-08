@@ -49,25 +49,18 @@
                 <input type="hidden" name="page" value="0">
               </div>
             </form>
-            <c:if test="${empty musicas}">
+            <c:if test="${empty musicList}">
                 <strong>Nenhuma música encontrada
             </c:if>
-            <c:forEach var="m" items="${musicas}">
+            <c:forEach var="m" items="${musicList}">
                 <div class="card my-3">
-                    <strong class="card-header">${m.title} (${m.ano})</strong>
+                    <strong class="card-header">${m.title}</strong>
                     <div class="card-body">
-                        <p>Duração: ${m.duracao}</p>
-                        <a href="/music/index.jsp?id=${m.id}" class="card-link">Ir para música</a>
+                        <p>Duração: ${m.duration}</p>
+                        <a href="/music-lpoo/MusicController?id=${m.id}" class="card-link">Ir para música</a>
                     </div>
                 </div>
             </c:forEach>
-            <div class="card my-3">
-                <strong class="card-header">Nome da música (ano)</strong>
-                <div class="card-body">
-                    <p>Duração: 3:12</p>
-                    <a href="/music/index.jsp?id=1" class="card-link">Ir para música</a>
-                </div>
-            </div>
             
             <nav aria-label="Page navigation example">
             <c:if test="${not empty musicCount}">

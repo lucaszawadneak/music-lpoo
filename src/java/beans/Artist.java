@@ -32,6 +32,10 @@ public class Artist implements Serializable {
         this.descricao = descricao;
     }
     
+    public Artist(Integer id) {
+        this.id = id;
+    }
+    
     public Artist() {
     }
 

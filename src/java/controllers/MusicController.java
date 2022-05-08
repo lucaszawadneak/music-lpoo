@@ -12,6 +12,7 @@ import beans.Music;
 import connection.ConnectionFactory;
 import dao.AlbumDAO;
 import dao.ArtistDAO;
+import dao.ArtistMusicDAO;
 import dao.MusicDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -100,6 +101,7 @@ public class MusicController extends HttpServlet {
                 ArtistDAO artDAO = new ArtistDAO(conn.getConnection());
                 MusicDAO mDAO = new MusicDAO(conn.getConnection());
                 AlbumDAO albDAO = new AlbumDAO(conn.getConnection());
+                ArtistMusicDAO amDAO = new ArtistMusicDAO(conn.getConnection());
                 
                 Artist artist = artDAO.find(Integer.parseInt(artist_id));
                 
@@ -113,8 +115,10 @@ public class MusicController extends HttpServlet {
                     album = albDAO.find(Integer.parseInt(album_id));
                 }
                 
-                Music m = new Music(title, duration, lyrics, album, Generos, artist, links, 0);
-                mDAO.insert(m);
+                Music m = new Music(title, duration, lyrics, album, Generos, links, 0);
+                Integer musicID = mDAO.insert(m);
+                
+                amDAO.insert(musicID, artist.getId());
                     
                 request.setAttribute("musica", m);
                 
@@ -134,9 +138,13 @@ public class MusicController extends HttpServlet {
             
             try{
                 MusicDAO mDAO = new MusicDAO(conn.getConnection());
+                ArtistMusicDAO amDAO = new ArtistMusicDAO(conn.getConnection());
                 Music m = mDAO.find(Integer.parseInt(musicID));
                 
+                ArrayList<Artist> artistas = amDAO.findMusicAuthors(m.getId());
+                
                 request.setAttribute("musica", m);
+                request.setAttribute("artistas", artistas);
 
                 rd.forward(request, response);
             } catch (Exception e){
