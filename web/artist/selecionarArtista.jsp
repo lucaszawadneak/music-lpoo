@@ -30,6 +30,9 @@
                 <c:if test="${not empty param.redirectPage}">
                     <input type="hidden" name="redirectPage" value="${param.redirectPage}"/>
                 </c:if>
+                <c:if test="${not empty param.album_id}">
+                    <input type="hidden" name="redirectPage" value="${param.album_id}"/>
+                </c:if>
                 <input type="hidden" name="action" value="search"/>
               </div>
         </form>

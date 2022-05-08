@@ -27,7 +27,7 @@
         <div style="margin-top: 100px; height: 600px">
             <div class="mt-lg-5">
                 <h2 style="color: #ffc800">Cadastrar música</h2>
-                <a class="btn btn-primary mb-2" href="/music-lpoo/artist/selecionarArtista.jsp?album_id=${param.album_id}&redirectPage=../music-lpoo/ArtistController?action=storeMusic&dd=${artista.id}">Selecionar artista</a>
+                <a class="btn btn-primary mb-2" href="/music-lpoo/artist/selecionarArtista.jsp?album_id=${param.album_id}&redirectPage=../music-lpoo/music/register.jsp">Selecionar artista</a>
                 <a class="btn btn-primary mb-2" href="/music-lpoo/album/selecionarAlbum.jsp?artist_id=${param.artist_id}&redirectPage=/music-lpoo/music/register.jsp">Selecionar álbum</a>
                 <form id="music" name="music" action="../MusicController" method="POST">
                     <input name="action" value="store" type="hidden"/>

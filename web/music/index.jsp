@@ -45,7 +45,7 @@
                         <p>Generos: ${musica.generos}</p>
                         <p>Links: ${musica.links.linkSpotify}/${musica.links.linkDeezer}/${musica.links.linkAppleMusic}</p>
                         <p>Visualizações: ${musica.visualizacoes}</p>
-                        <a href="/music-lpoo/AlbumController?id=${musica.album.id}" class="card-link">Ir para Album</a>
+                        <a href="/music-lpoo/RecordController?id=${musica.album.id}" class="card-link">Ir para Album</a>
                     </div>
                 </div>
             <strong>Artistas</strong>

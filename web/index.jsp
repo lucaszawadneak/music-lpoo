@@ -58,66 +58,6 @@
             </div>
         </header>
 
-        <!-- Portfolio Grid-->
-        <section class="page-section bg-light" id="portfolio">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Músicas</h2>
-                    <h3 class="section-subheading text-muted">Músicas mais ouvidas</h3>
-                </div>
-                <div class="row">
-                    <c:forEach var = "i" begin = "1" end = "6">
-                        <div class="col-lg-4 col-sm-6 mb-4">
-                            <!-- Portfolio item 1-->
-                            <div class="portfolio-item">
-                                <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-                                    <div class="portfolio-hover">
-                                        <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                    </div>
-                                    <img class="img-fluid" src="assets/img/portifolio/${i}.0.jpeg" alt="..." />
-                                </a>
-                                <div class="portfolio-caption">
-                                    <div class="portfolio-caption-heading">Threads</div>
-                                    <div class="portfolio-caption-subheading text-muted">Illustration</div>
-                                </div>
-                            </div>
-                        </div>
-                    </c:forEach>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Portfolio Grid-->
-    <section class="page-section bg-light" id="ranking">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="section-heading text-uppercase">Albuns</h2>
-                <h3 class="section-subheading text-muted">Albuns mais ouvidos</h3>
-            </div>
-
-            <div class="row">
-                <c:forEach var = "i" begin = "1" end = "6">
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <!-- Portfolio item 1-->
-                        <div class="ranking-item">
-                            <a class="ranking-link" data-bs-toggle="modal" href="#rankingModal1">
-                                <div class="ranking-hover">
-                                    <div class="ranking-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portifolio1/${i}.0.jpg" alt="..." />
-                            </a>
-                            <div class="ranking-caption">
-                                <div class="ranking-caption-heading">Threads</div>
-                                <div class="ranking-caption-subheading text-muted">Illustration</div>
-                            </div>
-                        </div>
-                    </div>
-                </c:forEach>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Team-->
 <section class="page-section bg-light" id="team">
     <div class="container">
         <div class="text-center">

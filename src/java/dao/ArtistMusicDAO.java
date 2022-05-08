@@ -42,8 +42,8 @@ public class ArtistMusicDAO {
     }
     
     public ArrayList<Artist> findMusicAuthors(Integer music_id) throws Exception{
-        String sql = "SELECT * FROM artistmusic am "
-                + "INNER JOIN artista a ON a.id = am.artistaid "
+        String sql = "SELECT * FROM artista a "
+                + "INNER JOIN artistmusic am ON a.id = am.artistaid "
                 + "WHERE am.musicid = ?";
         ArrayList<Artist> list = new ArrayList<>();;
         try{
