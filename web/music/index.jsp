@@ -47,17 +47,6 @@
                 </div>
             </nav>
 
-<<<<<<< HEAD
-            <div class="card my-3 mt-5">
-                    <strong class="card-header">${musica.title}</strong>
-                    <div class="card-body">
-                        <p>Duração: ${musica.duration}</p>
-                        <p>Letra: ${musica.lyrics}</p>
-                        <p>Generos: ${musica.generos}</p>
-                        <p>Links: ${musica.links}</p>
-                        <p>Visualizações: ${musica.visualizacoes}</p>
-                        <a href="/music-lpoo/AlbumController?id=${musica.album.id}" class="card-link">Ir para Album</a>
-=======
             <c:forEach var="m" items="${musicas}" varStatus="count">
                 <div class="card my-3">
                     <strong class="card-header">${m.title}</strong>
@@ -68,9 +57,7 @@
                         <p>Generos: ${m.generos}</p>
                         <p>Links: ${m.links.linkSpotify}/${m.links.linkDeezer}/${m.links.linkAppleMusic}</p>
                         <p>Visualizações: ${m.visualizacoes}</p>
-                        <a href="/music-lpoo/album/AlbumController?id=${m.album.id}" class="card-link">Ir para Album</a>
-                        <a href="/music-lpoo/artist/ArtistController?id=${m.arist.id}" class="card-link">Ir para Artista</a>
->>>>>>> 4590848cadcfc236a9ce97474313af5571845153
+                        <a href="/music-lpoo/AlbumController?id=${m.album.id}" class="card-link">Ir para Album</a>
                     </div>
                 </div>
             <strong>Artistas</strong>
