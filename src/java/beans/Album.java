@@ -32,6 +32,11 @@ public class Album implements Serializable {
     public Album(){
         
     }
+    
+    public Album(Integer id){
+        this.id = id;
+        
+    }
     public Album(String nomePassado,int anoPassado){
         this.nome = nomePassado;
         this.ano = anoPassado;
